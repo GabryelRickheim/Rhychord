@@ -18,26 +18,26 @@ func _physics_process(delta):
 		$Node2D.position.y -= speed * delta
 
 
-func initialize(lane, bpm, index):
-	self.lane = lane
-	self.bpm = bpm
-	self.index = index
-	speed = (768 / (60.0 / bpm)) / 3
+func initialize(laneArg, bpmArg, indexArg):
+	self.lane = laneArg
+	self.bpm = bpmArg
+	self.index = indexArg
+	speed = (768 / (60.0 / bpmArg)) / 3
 	position.y = -64
-	if lane == 0:
+	if laneArg == 0:
 		$AnimatedSprite2D.frame = 0
 		position.x = 192
-	elif lane == 1:
+	elif laneArg == 1:
 		$AnimatedSprite2D.frame = 1
 		position.x = 320
-	elif lane == 2:
+	elif laneArg == 2:
 		$AnimatedSprite2D.frame = 2
 		position.x = 576
-	elif lane == 3:
+	elif laneArg == 3:
 		$AnimatedSprite2D.frame = 3
 		position.x = 448
 	else:
-		printerr("Invalid lane set for note: " + str(lane))
+		printerr("Invalid laneArg set for note: " + str(laneArg))
 		return
 
 func destroy():

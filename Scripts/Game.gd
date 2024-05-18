@@ -24,7 +24,7 @@ func _ready():
 func _process(_delta):
 	_spawn_notes()
 	
-func _on_Note_Pressed(notePressed):
+func _on_Note_Pressed(_notePressed):
 	pass
 
 func _on_Conductor_beat(_beatPosition):
