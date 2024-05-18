@@ -1,6 +1,11 @@
+Window
+Node2D
+CollisionShape2D
+ColorPicker
+Area2D
+Sprite2D
 Timer
 AnimatedSprite2D
 Label
 Node
 AudioStreamPlayer
-Area2D

@@ -2,7 +2,7 @@ extends AudioStreamPlayer
 
 var bpm = 0
 var beatsPerBar = 0
-var songPosition = 0.0
+var songPosition = 0
 var songPositionInBeats = 0
 var secPerBeat = 60.0 / bpm
 var lastReportedBeat = -1
@@ -13,8 +13,9 @@ var timeOffBeat = 0.0
 
 signal beat(beatPosition)
 signal bar(barPosition)
+signal position(songPosition)
 
-var song = preload("res://Sound/Sound-Speed Dash.ogg")
+var song = preload("res://Sound/song.ogg")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +23,7 @@ func _ready():
 	bpm = get_parent().bpm
 	beatsPerBar = get_parent().beatsPerBar
 	secPerBeat = 60.0 / bpm
+	songPosition = (secPerBeat * 4) * -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

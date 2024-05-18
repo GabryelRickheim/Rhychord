@@ -1,9 +1,6 @@
 extends AnimatedSprite2D
 
-var perfect = false
-var good = false
-var okay = false
-var current_note = null
+var notes = []
 
 @export var input = ""
 
@@ -14,14 +11,24 @@ func _unhandled_input(event):
 		if event.is_action_pressed("ui_" + input):
 			emit_signal("notePressed", input)
 			frame = 1
+			if !notes.is_empty():
+				var note = notes[0]
+				for n in notes:
+					if n.index < note.index:
+						note = n
+				notes.erase(note)
+				note.hit = true
+				note.destroy()
 		elif event.is_action_released("ui_" + input):
-			$Timer.start()
-
-func _on_PushTimer_timeout():
-	frame = 0
+			frame = 0
 
 func _reset():
-	current_note = null
-	perfect = false
-	good = false
-	okay = false
+	notes = []
+	
+func _on_area_2d_area_entered(area):
+	notes.append(area)
+
+func _on_area_2d_area_exited(area):
+	if !area.hit:
+		notes.erase(area)
+		area.destroy()

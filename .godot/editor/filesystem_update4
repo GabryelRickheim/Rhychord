@@ -1,7 +1,10 @@
 res://Scenes/Game.tscn
 res://Frames/arrow_up_frames.tres
+res://Scenes/ArrowButton.tscn
 res://Scenes/Conductor.tscn
+res://Scenes/Note.tscn
 res://Scripts/Game.gd
 res://Scripts/Conductor.gd
 res://Scripts/ArrowButton.gd
-res://Scenes/ArrowButton.tscn
+res://Scenes/Main.tscn
+res://Scripts/Note.gd
