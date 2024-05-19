@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1715989725
+::res://::1716090109
 icon.svg::CompressedTexture2D::1081590468184906347::1712858009::1712858040::1::::<><>::
 README.md::TextFile::-1::1712860798::0::1::::<><>::
 ::res://Fonts/::1712896618
@@ -8,22 +8,22 @@ HeartbitXX2Px.ttf::FontFile::326122320902425765::1594956520::1712896618::1::::<>
 HeartbitXX.ttf::FontFile::1409672305780585270::1594956520::1712896618::1::::<><>::
 ManaFont.tres::FontFile::-1::1712858747::0::1::::<><>::
 manaspc.ttf::FontFile::8288838346645975836::1594956520::1712896618::1::::<><>::
-::res://Frames/::1715989667
+::res://Frames/::1716089349
 arrow_left_frames.tres::SpriteFrames::-1::1712858747::0::1::::<><>::res://Sprites/game/arrow_button/left/arrow_button_left1.png<>res://Sprites/game/arrow_button/left/arrow_button_left2.png
 arrow_right_frames.tres::SpriteFrames::-1::1712858747::0::1::::<><>::res://Sprites/game/arrow_button/right/arrow_button_right1.png<>res://Sprites/game/arrow_button/right/arrow_button_right2.png
-arrow_up_frames.tres::SpriteFrames::470589978035979423::1715989667::0::1::::<><>::uid://fme13k3nqwmh::::res://Sprites/game/arrow_button/up/arrow_button_up2.png<>uid://dlcua5f0ntso4::::res://Sprites/game/arrow_button/up/arrow_button_up1.png
+arrow_up_frames.tres::SpriteFrames::470589978035979423::1716089349::0::1::::<><>::uid://fme13k3nqwmh::::res://Sprites/game/arrow_button/up/arrow_button_up2.png<>uid://dlcua5f0ntso4::::res://Sprites/game/arrow_button/up/arrow_button_up1.png
 note_frames.tres::SpriteFrames::8759794442558480077::1712896986::0::1::::<><>::uid://n4bwxn1alnde::::res://Sprites/game/arrow_button/up/arrow_button_up3.png<>uid://dvwhhanjglt2c::::res://Sprites/game/arrow_button/right/arrow_button_right3.png<>uid://c52nb24l8dbsa::::res://Sprites/game/arrow_button/left/arrow_button_left3.png<>uid://dv0f58s8m3qkv::::res://Sprites/game/arrow_button/up/arrow_button_down3.png
-::res://Scenes/::1715992237
-ArrowButton.tscn::PackedScene::3523323050524384347::1715992237::0::1::::<><>::uid://gx7svx3jnjnj::::res://Frames/arrow_up_frames.tres<>res://Scripts/ArrowButton.gd
+::res://Scenes/::1716089807
+ArrowButton.tscn::PackedScene::3523323050524384347::1716089649::0::1::::<><>::uid://gx7svx3jnjnj::::res://Frames/arrow_up_frames.tres<>res://Scripts/ArrowButton.gd
 Conductor.tscn::PackedScene::5284837078704287085::1715961854::0::1::::<><>::res://Scripts/Conductor.gd
-Game.tscn::PackedScene::7351831084512796074::1715992237::0::1::::<><>::res://Scripts/Game.gd<>uid://chkaq2yi4t8ht::::res://Scenes/Conductor.tscn<>uid://cwrm8qwfokkw0::::res://Sound/soft-hitnormal.wav<>uid://bqgyu67qg8580::::res://Scenes/ArrowButton.tscn
-Note.tscn::PackedScene::6542586292563387370::1715992237::0::1::::<><>::uid://dw2ksgb08agyv::::res://Frames/note_frames.tres<>res://Scripts/Note.gd
-::res://Scripts/::1715992073
-ArrowButton.gd::GDScript::-1::1715990934::0::1::::<>AnimatedSprite2D<>::
+Game.tscn::PackedScene::7351831084512796074::1716089807::0::1::::<><>::res://Scripts/Game.gd<>uid://chkaq2yi4t8ht::::res://Scenes/Conductor.tscn<>uid://cwrm8qwfokkw0::::res://Sound/soft-hitnormal.wav<>uid://bqgyu67qg8580::::res://Scenes/ArrowButton.tscn
+Note.tscn::PackedScene::6542586292563387370::1716089807::0::1::::<><>::uid://dw2ksgb08agyv::::res://Frames/note_frames.tres<>res://Scripts/Note.gd
+::res://Scripts/::1716089807
+ArrowButton.gd::GDScript::-1::1715994503::0::1::::<>AnimatedSprite2D<>::
 Conductor.gd::GDScript::-1::1715985068::0::1::::<>AudioStreamPlayer<>::
-Game.gd::GDScript::-1::1715992073::0::1::::<>Node2D<>::
-Note.gd::GDScript::-1::1715992073::0::1::::<>Area2D<>::
-::res://Sound/::1715992384
+Game.gd::GDScript::-1::1716089807::0::1::::<>Node2D<>::
+Note.gd::GDScript::-1::1716089807::0::1::::<>Area2D<>::
+::res://Sound/::1715992388
 soft-hitnormal.wav::AudioStreamWAV::6352878758959580541::1712873517::1712873532::1::::<><>::
 song.ogg::AudioStreamOggVorbis::5763955470043400007::1715992384::1715992388::1::::<><>::
 Sound-Speed Dash.ogg::AudioStreamOggVorbis::4934124931717179884::1715967866::1715967871::1::::<><>::
@@ -67,3 +67,7 @@ play2.png::CompressedTexture2D::3476650819887460671::1594956520::1712875117::1::
 ::res://Sprites/ui/test_button/::1712875117
 test_button1.png::CompressedTexture2D::2498057975839958827::1594956520::1712875117::1::::<><>::
 test_button2.png::CompressedTexture2D::4415011229678476477::1594956520::1712875117::1::::<><>::
+::res://Utils/::1715997476
+::res://Utils/Midi Extractor/::1715997489
+note_start_times.txt::TextFile::-1::1715996598::0::1::::<><>::
+note_times.txt::TextFile::-1::1715977258::0::1::::<><>::

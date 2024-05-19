@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/ArrowButton.gd" id="1_uk538"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxfiw"]
-size = Vector2(24, 24)
+size = Vector2(10, 24)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("1_36g8h")

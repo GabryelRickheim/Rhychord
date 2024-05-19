@@ -5,6 +5,8 @@ var speed = 0
 var hit = false
 var lane = 0
 var index = 0
+var startDelay = 0
+var speedAdd = 256
 
 signal destroyed(index, hit)
 
@@ -13,29 +15,38 @@ func _ready():
 	
 func _physics_process(delta):
 	if !hit:
-		position.y += speed * delta
+		if lane == 0:
+			position.x += speed * delta
+		elif lane == 1:
+			position.y += speed * delta
+		elif lane == 2:
+			position.x -= speed * delta
+		elif lane == 3:
+			position.y -= speed * delta
 	else:
 		$Node2D.position.y -= speed * delta
 
 
-func initialize(laneArg, bpmArg, indexArg):
+func initialize(laneArg, indexArg, startDelay):
 	self.lane = laneArg
-	self.bpm = bpmArg
 	self.index = indexArg
-	speed = (768 / (60.0 / bpmArg)) / 3
-	position.y = -64
+	speed = ((384 + speedAdd) / startDelay)
 	if laneArg == 0:
 		$AnimatedSprite2D.frame = 0
-		position.x = 192
+		position.x = -64 - speedAdd
+		position.y = 384
 	elif laneArg == 1:
 		$AnimatedSprite2D.frame = 1
-		position.x = 320
+		position.x = 384
+		position.y = -64 - speedAdd
 	elif laneArg == 2:
 		$AnimatedSprite2D.frame = 2
-		position.x = 576
+		position.x = 832 + speedAdd
+		position.y = 384
 	elif laneArg == 3:
 		$AnimatedSprite2D.frame = 3
-		position.x = 448
+		position.x = 384
+		position.y = 832 + speedAdd
 	else:
 		printerr("Invalid laneArg set for note: " + str(laneArg))
 		return

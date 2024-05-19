@@ -4,7 +4,7 @@ var bpm = 0
 var beatsPerBar = 0
 var songPosition = 0
 var songPositionInBeats = 0
-var secPerBeat = 60.0 / bpm
+var secPerBeat = 0
 var lastReportedBeat = -1
 var beatsBeforeStart = 0
 var currentBar = 1
@@ -13,7 +13,6 @@ var timeOffBeat = 0.0
 
 signal beat(beatPosition)
 signal bar(barPosition)
-signal position(songPosition)
 
 var song = preload("res://Sound/song.ogg")
 
@@ -22,8 +21,8 @@ func _ready():
 	self.stream = song
 	bpm = get_parent().bpm
 	beatsPerBar = get_parent().beatsPerBar
-	secPerBeat = 60.0 / bpm
-	songPosition = (secPerBeat * 4) * -1
+	secPerBeat = get_parent().secsPerBeat
+	songPosition = -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -42,11 +41,6 @@ func _report_beat():
 		lastReportedBeat = songPositionInBeats
 		currentBar += 1
 		
-func closest_beat():
-	closest = int(round((songPosition / secPerBeat))) 
-	timeOffBeat = songPosition - (closest * secPerBeat)
-	return Vector2(closest, timeOffBeat)
-
 func play_with_beat_offset(num):
 	beatsBeforeStart = num
 	$StartTimer.wait_time = secPerBeat
@@ -63,10 +57,4 @@ func _on_StartTimer_timeout():
 	else:
 		play()
 		$StartTimer.stop()
-	
-	
-func play_from_beat(startingBeat, offset):
-	play()
-	seek(startingBeat * secPerBeat)
-	beatsBeforeStart = offset
-	currentBar = startingBeat % beatsPerBar + 1
+

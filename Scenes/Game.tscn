@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc0jt36qm27rq"]
+[gd_scene load_steps=7 format=3 uid="uid://dc0jt36qm27rq"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_xsr4u"]
 [ext_resource type="PackedScene" uid="uid://chkaq2yi4t8ht" path="res://Scenes/Conductor.tscn" id="2_jhfs7"]
 [ext_resource type="AudioStream" uid="uid://cwrm8qwfokkw0" path="res://Sound/soft-hitnormal.wav" id="3_mp8xw"]
 [ext_resource type="PackedScene" uid="uid://bqgyu67qg8580" path="res://Scenes/ArrowButton.tscn" id="5_tjads"]
+
+[sub_resource type="SystemFont" id="SystemFont_t3ilg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_73r6v"]
+font = SubResource("SystemFont_t3ilg")
+font_size = 25
 
 [node name="Game" type="Node2D"]
 top_level = true
@@ -21,30 +27,63 @@ wait_time = 0.253
 one_shot = true
 
 [node name="UpArrow" parent="." instance=ExtResource("5_tjads")]
-position = Vector2(320, 704)
-scale = Vector2(4, 4)
+position = Vector2(384, 320)
+scale = Vector2(3, 3)
 input = "up"
 
 [node name="LeftArrow" parent="." instance=ExtResource("5_tjads")]
-position = Vector2(192, 704)
+position = Vector2(320, 384)
 rotation = -1.57079
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 input = "left"
 
 [node name="DownArrow" parent="." instance=ExtResource("5_tjads")]
-position = Vector2(448, 704)
+position = Vector2(384, 448)
 rotation = 3.14159
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 input = "down"
 
 [node name="RightArrow" parent="." instance=ExtResource("5_tjads")]
-position = Vector2(576, 704)
+position = Vector2(448, 384)
 rotation = 1.57079
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 input = "right"
 
-[connection signal="bar" from="Conductor" to="." method="_on_Conductor_bar"]
-[connection signal="beat" from="Conductor" to="." method="_on_Conductor_beat"]
+[node name="JudgementLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 224.0
+offset_top = 688.0
+offset_right = 288.0
+offset_bottom = 723.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_73r6v")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 480.0
+offset_top = 688.0
+offset_right = 544.0
+offset_bottom = 723.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_73r6v")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [connection signal="notePressed" from="UpArrow" to="." method="_on_Note_Pressed"]
 [connection signal="notePressed" from="LeftArrow" to="." method="_on_Note_Pressed"]
 [connection signal="notePressed" from="DownArrow" to="." method="_on_Note_Pressed"]
