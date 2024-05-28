@@ -4,7 +4,7 @@ var bpm = 0
 var beatsPerBar = 0
 var songPosition = 0
 var songPositionInBeats = 0
-var secPerBeat = 0
+var secsPerBeat = 0
 var lastReportedBeat = -1
 var beatsBeforeStart = 0
 var currentBar = 1
@@ -14,14 +14,8 @@ var timeOffBeat = 0.0
 signal beat(beatPosition)
 signal bar(barPosition)
 
-var song = preload("res://Sound/song.ogg")
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.stream = song
-	bpm = get_parent().bpm
-	beatsPerBar = get_parent().beatsPerBar
-	secPerBeat = get_parent().secsPerBeat
 	songPosition = -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,7 +23,7 @@ func _process(_delta):
 	if self.playing:
 		songPosition = get_playback_position() + AudioServer.get_time_since_last_mix()
 		songPosition -= AudioServer.get_output_latency()
-		songPositionInBeats = int(floor(songPosition / secPerBeat)) + beatsBeforeStart
+		songPositionInBeats = int(floor(songPosition / secsPerBeat)) + beatsBeforeStart
 		_report_beat()
 
 func _report_beat():
@@ -43,7 +37,7 @@ func _report_beat():
 		
 func play_with_beat_offset(num):
 	beatsBeforeStart = num
-	$StartTimer.wait_time = secPerBeat
+	$StartTimer.wait_time = secsPerBeat
 	$StartTimer.start()
 
 func _on_StartTimer_timeout():

@@ -15,11 +15,18 @@ run/main_scene="res://Scenes/Game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ScoreSingleton="*res://Scripts/ScoreSingleton.gd"
+SettingsSingleton="*res://Scripts/SettingsSingleton.gd"
+
 [display]
 
 window/size/viewport_width=768
 window/size/viewport_height=768
 window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
+window/stretch/scale_mode="integer"
 
 [input]
 

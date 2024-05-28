@@ -1,11 +1,14 @@
 Label
-Window
+Timer
+ColorRect
+GPUParticles2D
+Control
 Node2D
+Sprite2D
+Window
 CollisionShape2D
 ColorPicker
 Area2D
-Sprite2D
-Timer
 AnimatedSprite2D
 Node
 AudioStreamPlayer

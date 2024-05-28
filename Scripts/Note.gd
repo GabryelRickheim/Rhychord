@@ -5,8 +5,7 @@ var speed = 0
 var hit = false
 var lane = 0
 var index = 0
-var startDelay = 0
-var speedAdd = 256
+var speedAdd = 0
 
 signal destroyed(index, hit)
 
@@ -27,9 +26,10 @@ func _physics_process(delta):
 		$Node2D.position.y -= speed * delta
 
 
-func initialize(laneArg, indexArg, startDelay):
+func initialize(laneArg, indexArg, startDelay, speedAddArg):
 	self.lane = laneArg
 	self.index = indexArg
+	self.speedAdd = speedAddArg
 	speed = ((384 + speedAdd) / startDelay)
 	if laneArg == 0:
 		$AnimatedSprite2D.frame = 0
@@ -54,4 +54,11 @@ func initialize(laneArg, indexArg, startDelay):
 func destroy():
 	$AnimatedSprite2D.visible = false
 	emit_signal("destroyed", index, hit)
+	if hit:
+		$GPUParticles2D.emitting = true
+		$Timer.start()
+	else:
+		queue_free()
+
+func _on_timer_timeout():
 	queue_free()

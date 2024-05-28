@@ -1,16 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0hjo8bx3pik5"]
+[gd_scene load_steps=6 format=3 uid="uid://c0hjo8bx3pik5"]
 
 [ext_resource type="SpriteFrames" uid="uid://dw2ksgb08agyv" path="res://Frames/note_frames.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://be8urbjt61ef" path="res://Sprites/game/arrow_button/particle.png" id="3_eqdg6"]
 [ext_resource type="Script" path="res://Scripts/Note.gd" id="4"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(24, 24)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g3t7c"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 341.95
+initial_velocity_max = 364.42
+gravity = Vector3(0, 0, 0)
+
 [node name="Note" type="Area2D"]
 script = ExtResource("4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3, 3)
 sprite_frames = ExtResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -18,3 +25,18 @@ scale = Vector2(3, 3)
 shape = SubResource("1")
 
 [node name="Node2D" type="Node2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_g3t7c")
+texture = ExtResource("3_eqdg6")
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

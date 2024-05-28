@@ -1,20 +1,34 @@
 import pretty_midi
+#save pitch and start time of each note in a midi file to a json
 
-def get_note_start_times(midi_file_path):
+def get_midi_info(midi_file_path):
     midi_data = pretty_midi.PrettyMIDI(midi_file_path)
-    note_start_times = []
-
+    midi_info = []
+    midi_info.append({"bpm": 180})
+    midi_info.append({"beatsPerBar": 4})
+    midi_info.append({"chart": []})
     for instrument in midi_data.instruments:
         for note in instrument.notes:
-            note_start_times.append(note.start)
+            if note.pitch == 48:
+                mappedPitch = 0
+            elif note.pitch == 49:
+                mappedPitch = 1
+            elif note.pitch == 50:
+                mappedPitch = 3
+            elif note.pitch == 51:
+                mappedPitch = 2
+            else:
+                mappedPitch = note.pitch
+            midi_info[2]["chart"].append({"lane": mappedPitch, "note": note.start})
+    return midi_info
 
-    return note_start_times
+# Caminho do arquivo MIDI a ser processado
+midi_file_path = "race.mid"
 
-# Example usage:
-midi_file_path = "determination.mid"
-note_start_times = get_note_start_times(midi_file_path)
-
-# save the note start times to a file
-with open("note_start_times.txt", "w") as f:
-    for note_start_time in note_start_times:
-        f.write(str(note_start_time) + ",")
+# Obtém os tempos de início das notas chamando a função get_note_start_times
+midi_info = get_midi_info(midi_file_path)
+ 
+# Salva as informações do MIDI em um arquivo JSON
+import json
+with open("chart.json", "w") as f:
+    json.dump(midi_info, f)
