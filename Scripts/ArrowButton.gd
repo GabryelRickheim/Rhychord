@@ -31,6 +31,6 @@ func _on_area_2d_area_entered(area):
 		notes.append(area)
 
 func _on_area_2d_area_exited(area):
-	if !area.hit:
+	if !area.hit and area.lane == inputs.find(input):
 		notes.erase(area)
 		area.destroy()

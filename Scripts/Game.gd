@@ -28,7 +28,6 @@ func _ready():
 	$LevelEndFade.color.a = 1
 	var tween = self.create_tween()
 	tween.tween_property($LevelEndFade, "color:a", 0, 0.5)
-	print(songName)
 	var songPath = "res://Charts/" + songName + "/song.ogg"
 	var chartPath = "res://Charts/" + songName + "/chart.json"
 	_build_chart(chartPath)
@@ -103,6 +102,7 @@ func _on_note_destroy(index, hit):
 			$Control/ScoreLabel.set_text("%05d" % score)
 	else:
 		misses += 1
+		print("miss")
 		$Control/JudgementLabel.set_text("Miss")
 	currentPercentage = ((notesHit - (goods * 0.1) - (earlys * 0.3) - (lates * 0.3)) / (index + 1.0)) * 100.0
 	$Control/PercentageLabel.set_text("%4.2f" % currentPercentage + "%")

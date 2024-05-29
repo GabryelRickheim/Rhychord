@@ -22,8 +22,8 @@ func _physics_process(delta):
 			position.x -= speed * delta
 		elif lane == 3:
 			position.y -= speed * delta
-	else:
-		$Node2D.position.y -= speed * delta
+		else:
+			$Node2D.position.y -= speed * delta
 
 
 func initialize(laneArg, indexArg, startDelay, speedAddArg):

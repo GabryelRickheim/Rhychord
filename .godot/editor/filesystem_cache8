@@ -1,6 +1,6 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1716930026
-export_presets.cfg::TextFile::-1::1716095569::0::1::::<><>::
+::res://::1716969105
+export_presets.cfg::TextFile::-1::1716944293::0::1::::<><>::
 icon.svg::CompressedTexture2D::1081590468184906347::1712858009::1712858040::1::::<><>::
 README.md::TextFile::-1::1712860798::0::1::::<><>::
 ::res://Charts/::1716872250
@@ -8,7 +8,7 @@ README.md::TextFile::-1::1712860798::0::1::::<><>::
 chart.json::JSON::-1::1716872140::0::1::::<><>::
 song.ogg::AudioStreamOggVorbis::2583610088717358714::1715992384::1716550959::1::::<><>::
 ::res://Charts/Sound-Speed Dash/::1716874128
-chart.json::JSON::-1::1716874567::0::1::::<><>::
+chart.json::JSON::-1::1716930375::0::1::::<><>::
 song.ogg::AudioStreamOggVorbis::4198138645541011959::1716874126::1716874128::1::::<><>::
 ::res://Fonts/::1716859959
 hemi head bd it.otf::FontFile::7587736910889238823::1411752886::1716859959::1::::<><>::
@@ -17,25 +17,25 @@ VCR_OSD_MONO_1.001.ttf::FontFile::5315431196620192604::1427836911::1716849069::1
 ::res://Frames/::1716585002
 arrow_button_frames.tres::SpriteFrames::470589978035979423::1716585002::0::1::::<><>::uid://brmersjnas3y6::::res://Sprites/game/arrow_button/arrow_button_on.png<>uid://bh2ijpsaijj4l::::res://Sprites/game/arrow_button/arrow_button_off.png
 note_frames.tres::SpriteFrames::8759794442558480077::1716585002::0::1::::<><>::uid://54m1j7r6jxnd::::res://Sprites/game/arrow_button/note_up.png<>uid://bf2xp1ux15qv8::::res://Sprites/game/arrow_button/note_right.png<>uid://bqkv4mk11vcv8::::res://Sprites/game/arrow_button/note_left.png<>uid://cyqd412ljfgwt::::res://Sprites/game/arrow_button/note_down.png
-::res://Scenes/::1716937991
-ArrowButton.tscn::PackedScene::3523323050524384347::1716937990::0::1::::<><>::res://Scripts/ArrowButton.gd<>uid://gx7svx3jnjnj::::res://Frames/arrow_button_frames.tres
-Conductor.tscn::PackedScene::5284837078704287085::1716937991::0::1::::<><>::res://Scripts/Conductor.gd
-Game.tscn::PackedScene::7351831084512796074::1716937990::0::1::::<><>::res://Scripts/Game.gd<>uid://ot32ewxdvuna::::res://Sprites/game/background.png<>uid://chkaq2yi4t8ht::::res://Scenes/Conductor.tscn<>uid://cwrm8qwfokkw0::::res://Sound/soft-hitnormal.wav<>uid://dgds6huo7ibit::::res://Fonts/hemi head bd it.otf<>uid://bqgyu67qg8580::::res://Scenes/ArrowButton.tscn<>res://Scripts/ScoreDisplay.gd
-Note.tscn::PackedScene::6542586292563387370::1716937990::0::1::::<><>::uid://dw2ksgb08agyv::::res://Frames/note_frames.tres<>uid://be8urbjt61ef::::res://Sprites/game/arrow_button/particle.png<>res://Scripts/Note.gd
-songSelect.tscn::PackedScene::351765538314950050::1716937991::0::1::::<><>::res://Scripts/SongSelect.gd<>uid://ot32ewxdvuna::::res://Sprites/game/background.png<>uid://chkaq2yi4t8ht::::res://Scenes/Conductor.tscn<>uid://dkg5ro8haagf0::::res://Sound/Lydia ~Menu~.ogg<>uid://dgds6huo7ibit::::res://Fonts/hemi head bd it.otf<>res://Scripts/ScoreDisplay.gd
-ResultScreen.tscn::PackedScene::5657936295402264641::1716937991::0::1::::<><>::res://Scripts/ResultScreen.gd<>uid://ot32ewxdvuna::::res://Sprites/game/background.png<>uid://dgds6huo7ibit::::res://Fonts/hemi head bd it.otf
-::res://Scripts/::1716936774
+::res://Scenes/::1716944317
+ArrowButton.tscn::PackedScene::3523323050524384347::1716944079::0::1::::<><>::res://Scripts/ArrowButton.gd<>uid://gx7svx3jnjnj::::res://Frames/arrow_button_frames.tres
+Conductor.tscn::PackedScene::5284837078704287085::1716944079::0::1::::<><>::res://Scripts/Conductor.gd
+Game.tscn::PackedScene::7351831084512796074::1716944317::0::1::::<><>::res://Scripts/Game.gd<>uid://ot32ewxdvuna::::res://Sprites/game/background.png<>uid://chkaq2yi4t8ht::::res://Scenes/Conductor.tscn<>uid://cwrm8qwfokkw0::::res://Sound/soft-hitnormal.wav<>uid://dgds6huo7ibit::::res://Fonts/hemi head bd it.otf<>uid://bqgyu67qg8580::::res://Scenes/ArrowButton.tscn<>res://Scripts/ScoreDisplay.gd
+Note.tscn::PackedScene::6542586292563387370::1716944079::0::1::::<><>::uid://dw2ksgb08agyv::::res://Frames/note_frames.tres<>uid://be8urbjt61ef::::res://Sprites/game/arrow_button/particle.png<>res://Scripts/Note.gd
+ResultScreen.tscn::PackedScene::5657936295402264641::1716944079::0::1::::<><>::res://Scripts/ResultScreen.gd<>uid://ot32ewxdvuna::::res://Sprites/game/background.png<>uid://dgds6huo7ibit::::res://Fonts/hemi head bd it.otf
+SongSelect.tscn::PackedScene::351765538314950050::1716944079::0::1::::<><>::res://Scripts/SongSelect.gd<>uid://ot32ewxdvuna::::res://Sprites/game/background.png<>uid://chkaq2yi4t8ht::::res://Scenes/Conductor.tscn<>uid://dkg5ro8haagf0::::res://Sound/Lydia ~Menu~.ogg<>uid://dgds6huo7ibit::::res://Fonts/hemi head bd it.otf<>res://Scripts/ScoreDisplay.gd
+::res://Scripts/::1716944317
 ArrowButton.gd::GDScript::-1::1716855677::0::1::::<>AnimatedSprite2D<>::
 Conductor.gd::GDScript::-1::1716936436::0::1::::<>AudioStreamPlayer<>::
-Game.gd::GDScript::-1::1716931337::0::1::::<>Node2D<>::
-Note.gd::GDScript::-1::1716862765::0::1::::<>Area2D<>::
+Game.gd::GDScript::-1::1716944317::0::1::::<>Node2D<>::
+Note.gd::GDScript::-1::1716942325::0::1::::<>Area2D<>::
+ResultScreen.gd::GDScript::-1::1716939420::0::1::::<>Node2D<>::
+ScoreDisplay.gd::GDScript::-1::1716935868::0::1::::<>Label<>::
+ScoreSingleton.gd::GDScript::-1::1716939658::0::1::::<>Node<>::
+SettingsSingleton.gd::GDScript::-1::1716866739::0::1::::<>Node<>::
+SongSelect.gd::GDScript::-1::1716938598::0::1::::<>Node2D<>::
 SongSelectButton.gd::GDScript::-1::1716938095::0::1::::<>Button<>::
 SongSelectItem.gd::GDScript::-1::1716936774::0::1::::<>Label<>::
-SongSelect.gd::GDScript::-1::1716936506::0::1::::<>Node2D<>::
-ResultScreen.gd::GDScript::-1::1716934931::0::1::::<>Node2D<>::
-ScoreDisplay.gd::GDScript::-1::1716935868::0::1::::<>Label<>::
-ScoreSingleton.gd::GDScript::-1::1716870590::0::1::::<>Node<>::
-SettingsSingleton.gd::GDScript::-1::1716866739::0::1::::<>Node<>::
 ::res://Sound/::1716935425
 Good Score.mp3::AudioStreamMP3::4872054968268230668::1709322900::1716932774::1::::<><>::
 Great Score!.mp3::AudioStreamMP3::6686296865128551227::1709322900::1716932774::1::::<><>::
@@ -56,4 +56,4 @@ note_up.png::CompressedTexture2D::2166307821521531889::1716856709::1716856724::1
 particle.png::CompressedTexture2D::80486626170977405::1716856088::1716856091::1::::<><>::
 ::res://Utils/::1715997476
 ::res://Utils/Midi Extractor/::1716930364
-chart.json::JSON::-1::1716874556::0::1::::<><>::
+chart.json::JSON::-1::1716930372::0::1::::<><>::

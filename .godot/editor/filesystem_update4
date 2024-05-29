@@ -1,14 +1,10 @@
 res://Scenes/Game.tscn
 res://Scripts/Game.gd
+res://Scripts/ScoreDisplay.gd
 res://Scenes/Note.tscn
 res://Scenes/ArrowButton.tscn
 res://Scenes/Conductor.tscn
 res://Scenes/ResultScreen.tscn
-res://Scripts/ResultScreen.gd
-res://Scripts/ScoreDisplay.gd
-res://Scripts/SongSelect.gd
-res://Scenes/songSelect.tscn
-res://Scripts/Conductor.gd
 res://Scenes/SongSelect.tscn
-res://Scripts/ScoreSingleton.gd
 res://Scripts/Note.gd
+res://Scripts/ArrowButton.gd
