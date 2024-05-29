@@ -52,3 +52,11 @@ func _on_StartTimer_timeout():
 		play()
 		$StartTimer.stop()
 
+func reset():
+	songPosition = -1
+	songPositionInBeats = 0
+	lastReportedBeat = -1
+	currentBar = 1
+	beatsBeforeStart = 0
+	timeOffBeat = 0.0
+

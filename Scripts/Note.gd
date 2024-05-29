@@ -33,20 +33,20 @@ func initialize(laneArg, indexArg, startDelay, speedAddArg):
 	speed = ((384 + speedAdd) / startDelay)
 	if laneArg == 0:
 		$AnimatedSprite2D.frame = 0
-		position.x = -64 - speedAdd
+		position.x = -36 - speedAdd
 		position.y = 384
 	elif laneArg == 1:
 		$AnimatedSprite2D.frame = 1
 		position.x = 384
-		position.y = -64 - speedAdd
+		position.y = -36 - speedAdd
 	elif laneArg == 2:
 		$AnimatedSprite2D.frame = 2
-		position.x = 832 + speedAdd
+		position.x = 768 + 36 + speedAdd
 		position.y = 384
 	elif laneArg == 3:
 		$AnimatedSprite2D.frame = 3
 		position.x = 384
-		position.y = 832 + speedAdd
+		position.y = 768 + 36 + speedAdd
 	else:
 		printerr("Invalid laneArg set for note: " + str(laneArg))
 		return

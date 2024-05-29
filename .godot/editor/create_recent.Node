@@ -1,3 +1,6 @@
+Button
+TextureRect
+AudioStreamPlayer
 Label
 Timer
 ColorRect
@@ -9,6 +12,3 @@ Window
 CollisionShape2D
 ColorPicker
 Area2D
-AnimatedSprite2D
-Node
-AudioStreamPlayer

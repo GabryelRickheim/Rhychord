@@ -1,0 +1,126 @@
+[gd_scene load_steps=9 format=3 uid="uid://fanr6idc427o"]
+
+[ext_resource type="Script" path="res://Scripts/SongSelect.gd" id="1_l3qqw"]
+[ext_resource type="Texture2D" uid="uid://ot32ewxdvuna" path="res://Sprites/game/background.png" id="2_bmcv1"]
+[ext_resource type="PackedScene" uid="uid://chkaq2yi4t8ht" path="res://Scenes/Conductor.tscn" id="3_62bcl"]
+[ext_resource type="AudioStream" uid="uid://dkg5ro8haagf0" path="res://Sound/Lydia ~Menu~.ogg" id="4_mdame"]
+[ext_resource type="FontFile" uid="uid://dgds6huo7ibit" path="res://Fonts/hemi head bd it.otf" id="5_dtk8f"]
+[ext_resource type="Script" path="res://Scripts/ScoreDisplay.gd" id="6_62eal"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_srvqn"]
+font = ExtResource("5_dtk8f")
+font_size = 50
+font_color = Color(0.231373, 0.32549, 0.886275, 1)
+outline_size = 8
+outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+shadow_size = 0
+shadow_color = Color(1, 1, 1, 0)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="Theme" id="Theme_d0o4a"]
+default_font = ExtResource("5_dtk8f")
+default_font_size = 50
+
+[node name="SongSelect" type="Node2D"]
+script = ExtResource("1_l3qqw")
+
+[node name="LevelEndFade" type="ColorRect" parent="."]
+top_level = true
+offset_right = 768.0
+offset_bottom = 768.0
+color = Color(0, 0, 0, 0)
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 768.0
+offset_bottom = 768.0
+pivot_offset = Vector2(384, 384)
+texture = ExtResource("2_bmcv1")
+
+[node name="Conductor" parent="." instance=ExtResource("3_62bcl")]
+stream = ExtResource("4_mdame")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 768.0
+offset_bottom = 768.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(384, 384)
+
+[node name="SongSelectLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.250333
+anchor_top = 0.125021
+anchor_right = 0.250333
+anchor_bottom = 0.125021
+offset_left = -128.256
+offset_top = -32.016
+offset_right = 127.744
+offset_bottom = 31.984
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 32)
+text = "Song Select"
+label_settings = SubResource("LabelSettings_srvqn")
+vertical_alignment = 1
+script = ExtResource("6_62eal")
+metadata/_edit_use_anchors_ = true
+
+[node name="SSDSelectButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.333
+anchor_top = 0.24
+anchor_right = 0.958
+anchor_bottom = 0.329
+offset_left = -63.744
+offset_top = -0.320007
+offset_right = 0.255981
+offset_bottom = 0.327972
+pivot_offset = Vector2(272, 35)
+theme = SubResource("Theme_d0o4a")
+theme_override_colors/font_color = Color(0.231373, 0.32549, 0.886275, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_focus_color = Color(0.0509804, 0.180392, 0.498039, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+theme_override_constants/outline_size = 8
+text = "Sound-Speed Dash"
+flat = true
+alignment = 2
+
+[node name="DTMNSelectButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.333
+anchor_top = 0.333
+anchor_right = 0.958
+anchor_bottom = 0.423
+offset_left = -63.744
+offset_top = 0.255997
+offset_right = 0.255981
+offset_bottom = 0.135986
+pivot_offset = Vector2(272, 35)
+theme = SubResource("Theme_d0o4a")
+theme_override_colors/font_color = Color(0.231373, 0.32549, 0.886275, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_focus_color = Color(0.0509804, 0.180392, 0.498039, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+theme_override_constants/outline_size = 8
+text = "Determination"
+flat = true
+alignment = 2
+
+[connection signal="beat" from="Conductor" to="Control/SongSelectLabel" method="_on_conductor_beat"]
+[connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]
+[connection signal="pressed" from="Control/SSDSelectButton" to="." method="_on_ssd_select_button_pressed"]
+[connection signal="pressed" from="Control/DTMNSelectButton" to="." method="_on_dtmn_select_button_pressed"]

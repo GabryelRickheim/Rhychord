@@ -1,7 +1,6 @@
 extends Node2D
 
-@export var songName = ""
-
+var songName = ""
 var bpm = 0
 var beatsPerBar = 0
 var secsPerBeat = 0
@@ -15,6 +14,7 @@ var currentNote = 0
 var instance = null
 
 var score = 0
+var notesHit = 0
 var perfects = 0
 var goods = 0
 var earlys = 0
@@ -24,10 +24,11 @@ var currentPercentage = 100.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	ScoreSingleton.reset()
+	songName = ScoreSingleton.songName
 	$LevelEndFade.color.a = 1
 	var tween = self.create_tween()
 	tween.tween_property($LevelEndFade, "color:a", 0, 0.5)
+	print(songName)
 	var songPath = "res://Charts/" + songName + "/song.ogg"
 	var chartPath = "res://Charts/" + songName + "/chart.json"
 	_build_chart(chartPath)
@@ -40,19 +41,21 @@ func _ready():
 	$Conductor.play_with_beat_offset(1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(_delta):		
 	_spawn_notes()
 
 func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_R:
 			get_tree().reload_current_scene()
+		elif event.pressed and event.keycode == KEY_ESCAPE:
+			get_tree().change_scene_to_file("res://Scenes/SongSelect.tscn")
 		
 func _spawn_notes():
 	if currentNote < (notes.size() - 1):
 		if $Conductor.songPosition >= notes[currentNote]:
 			instance = note.instantiate()
-			instance.initialize(lanes[currentNote], currentNote, startDelay, SettingsSingleton.speedAdd)
+			instance.initialize(lanes[currentNote], currentNote, startDelay, (SettingsSingleton.speedAdd / (bpm / 138)))
 			currentNote += 1
 			add_child(instance)
 			instance.connect("destroyed", _on_note_destroy)
@@ -69,13 +72,14 @@ func _build_chart(chartPath):
 	beatsPerBar = json[1]["beatsPerBar"]
 	secsPerBeat = (60.0 / bpm)
 	startDelay = (secsPerBeat * 3)
-	perfectTimingWindow = secsPerBeat / 12
-	goodTimingWindow = secsPerBeat / 8
+	perfectTimingWindow = (secsPerBeat / 12) * (bpm / 138)
+	goodTimingWindow = (secsPerBeat / 8) * (bpm / 138)
 		
 func _on_note_destroy(index, hit):	
 	var adjustedSongPosition = $Conductor.songPosition - startDelay
 	var offset = (notes[index] * -1) + adjustedSongPosition
 	if hit:
+		notesHit += 1
 		$AudioStreamPlayer.play()
 		if offset < perfectTimingWindow && offset > (perfectTimingWindow * -1):
 			$Control/JudgementLabel.set_text("Perfect")
@@ -87,12 +91,12 @@ func _on_note_destroy(index, hit):
 			score += 50
 			goods += 1
 			$Control/ScoreLabel.set_text("%05d" % score)
-		elif offset >= goodTimingWindow:
+		elif offset >= perfectTimingWindow:
 			$Control/JudgementLabel.set_text("Late")
 			score += 25
 			earlys += 1
 			$Control/ScoreLabel.set_text("%05d" % score)
-		elif offset <= (goodTimingWindow * -1):
+		elif offset <= (perfectTimingWindow * -1):
 			$Control/JudgementLabel.set_text("Early")
 			score += 25
 			lates += 1
@@ -100,7 +104,7 @@ func _on_note_destroy(index, hit):
 	else:
 		misses += 1
 		$Control/JudgementLabel.set_text("Miss")
-	currentPercentage = (((index + 1.0) - misses - (goods * 0.1) - (earlys * 0.3) - (lates * 0.3)) / (index + 1.0)) * 100.0
+	currentPercentage = ((notesHit - (goods * 0.1) - (earlys * 0.3) - (lates * 0.3)) / (index + 1.0)) * 100.0
 	$Control/PercentageLabel.set_text("%4.2f" % currentPercentage + "%")
 	
 	if currentPercentage == 100:
@@ -126,6 +130,7 @@ func _on_conductor_finished():
 
 
 func _on_level_end_timer_timeout():
+	ScoreSingleton.reset()
 	ScoreSingleton.perfects = perfects
 	ScoreSingleton.goods = goods
 	ScoreSingleton.earlys = earlys

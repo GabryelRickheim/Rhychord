@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmu0nccwb82dx"]
+[gd_scene load_steps=8 format=3 uid="uid://cmu0nccwb82dx"]
 
 [ext_resource type="Script" path="res://Scripts/ResultScreen.gd" id="1_v2wpr"]
+[ext_resource type="Texture2D" uid="uid://ot32ewxdvuna" path="res://Sprites/game/background.png" id="2_1pmbj"]
 [ext_resource type="FontFile" uid="uid://dgds6huo7ibit" path="res://Fonts/hemi head bd it.otf" id="2_24107"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4icaa"]
 font = ExtResource("2_24107")
 font_size = 50
-font_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+font_color = Color(0.231373, 0.32549, 0.886275, 1)
 outline_size = 8
-outline_color = Color(0.231373, 0.32549, 0.886275, 1)
+outline_color = Color(0.0203216, 0.102389, 0.312126, 1)
 shadow_size = 0
 shadow_color = Color(1, 1, 1, 0)
 shadow_offset = Vector2(0, 0)
@@ -19,6 +20,16 @@ font_size = 200
 font_color = Color(0.0156863, 0.0862745, 0.27451, 1)
 outline_size = 15
 outline_color = Color(0.231373, 0.32549, 0.886275, 1)
+shadow_size = 0
+shadow_color = Color(1, 1, 1, 0)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_80ptf"]
+font = ExtResource("2_24107")
+font_size = 200
+font_color = Color(1, 0.843137, 0, 1)
+outline_size = 15
+outline_color = Color(0.305882, 0.25098, 0, 1)
 shadow_size = 0
 shadow_color = Color(1, 1, 1, 0)
 shadow_offset = Vector2(0, 0)
@@ -42,11 +53,17 @@ offset_right = 768.0
 offset_bottom = 768.0
 color = Color(0, 0, 0, 0)
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="LevelEndFlash" type="ColorRect" parent="."]
+top_level = true
+offset_right = 768.0
+offset_bottom = 768.0
+color = Color(1, 1, 1, 0)
+
+[node name="Background" type="TextureRect" parent="."]
 offset_right = 768.0
 offset_bottom = 768.0
 pivot_offset = Vector2(384, 384)
-color = Color(0, 0.152941, 0.25098, 1)
+texture = ExtResource("2_1pmbj")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -82,6 +99,8 @@ Late: 100
 Miss: 100"
 label_settings = SubResource("LabelSettings_4icaa")
 vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
 metadata/_edit_use_anchors_ = true
 
 [node name="TotalScoreLabel" type="Label" parent="Control"]
@@ -101,6 +120,8 @@ pivot_offset = Vector2(128, 32)
 text = "Total Score: 00000"
 label_settings = SubResource("LabelSettings_4icaa")
 vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
 metadata/_edit_use_anchors_ = true
 
 [node name="SongNameLabel" type="Label" parent="Control"]
@@ -108,8 +129,8 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.208
 anchor_top = 0.0833333
-anchor_right = 0.485344
-anchor_bottom = 0.0833333
+anchor_right = 0.791333
+anchor_bottom = 0.166667
 offset_left = -127.744
 offset_top = -32.0
 offset_right = 128.256
@@ -119,7 +140,9 @@ grow_vertical = 2
 pivot_offset = Vector2(128, 32)
 text = "Song Name"
 label_settings = SubResource("LabelSettings_4icaa")
-vertical_alignment = 1
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
 metadata/_edit_use_anchors_ = true
 
 [node name="TotalPercentageLabel" type="Label" parent="Control"]
@@ -139,9 +162,12 @@ pivot_offset = Vector2(128, 32)
 text = "Percentage: 100.00%"
 label_settings = SubResource("LabelSettings_4icaa")
 vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
 metadata/_edit_use_anchors_ = true
 
 [node name="FinalRankLabel" type="Label" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.739583
@@ -157,6 +183,27 @@ grow_vertical = 2
 pivot_offset = Vector2(192, 128)
 text = "SS"
 label_settings = SubResource("LabelSettings_eo6ym")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SSRankLabel" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.739583
+anchor_top = 0.833
+anchor_right = 0.739583
+anchor_bottom = 0.833
+offset_left = -192.0
+offset_top = -127.744
+offset_right = 192.0
+offset_bottom = 129.256
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(192, 128)
+text = "SS"
+label_settings = SubResource("LabelSettings_80ptf")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -181,3 +228,5 @@ label_settings = SubResource("LabelSettings_2inqf")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

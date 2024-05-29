@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dc0jt36qm27rq"]
+[gd_scene load_steps=9 format=3 uid="uid://dc0jt36qm27rq"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_xsr4u"]
+[ext_resource type="Texture2D" uid="uid://ot32ewxdvuna" path="res://Sprites/game/background.png" id="2_5mxam"]
 [ext_resource type="PackedScene" uid="uid://chkaq2yi4t8ht" path="res://Scenes/Conductor.tscn" id="2_jhfs7"]
 [ext_resource type="AudioStream" uid="uid://cwrm8qwfokkw0" path="res://Sound/soft-hitnormal.wav" id="3_mp8xw"]
 [ext_resource type="FontFile" uid="uid://dgds6huo7ibit" path="res://Fonts/hemi head bd it.otf" id="5_ek40v"]
@@ -10,9 +11,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_73r6v"]
 font = ExtResource("5_ek40v")
 font_size = 50
-font_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+font_color = Color(0.231373, 0.32549, 0.886275, 1)
 outline_size = 8
-outline_color = Color(0.231373, 0.32549, 0.886275, 1)
+outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
 shadow_size = 0
 shadow_color = Color(1, 1, 1, 0)
 shadow_offset = Vector2(0, 0)
@@ -20,7 +21,6 @@ shadow_offset = Vector2(0, 0)
 [node name="Game" type="Node2D"]
 top_level = true
 script = ExtResource("1_xsr4u")
-songName = "Sound-Speed Dash"
 
 [node name="LevelEndFade" type="ColorRect" parent="."]
 top_level = true
@@ -28,11 +28,11 @@ offset_right = 768.0
 offset_bottom = 768.0
 color = Color(0, 0, 0, 0)
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 offset_right = 768.0
 offset_bottom = 768.0
 pivot_offset = Vector2(384, 384)
-color = Color(0, 0.152941, 0.25098, 1)
+texture = ExtResource("2_5mxam")
 
 [node name="Conductor" parent="." instance=ExtResource("2_jhfs7")]
 

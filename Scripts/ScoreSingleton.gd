@@ -1,14 +1,14 @@
 extends Node
 
-var score = 0
-var perfects = 0
-var goods = 0
-var earlys = 0
-var lates = 0
+var score = 99999
+var perfects = 999
+var goods = 999
+var earlys = 999
+var lates = 999
 var misses = 0
-var percentage = 0
-var rank = "F"
-var songName = "Song Name"
+var percentage = 100
+var rank = "SS"
+var songName = "Determination"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -27,4 +27,4 @@ func reset():
 	misses = 0
 	percentage = 0
 	rank = "F"
-	songName = "Song Name"
+	songName = "Determination"
