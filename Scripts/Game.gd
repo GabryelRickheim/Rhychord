@@ -15,6 +15,8 @@ var instance = null
 
 var score = 0
 var notesHit = 0
+var currentCombo = 0
+var maxCombo = 0
 var perfects = 0
 var goods = 0
 var earlys = 0
@@ -45,16 +47,18 @@ func _process(_delta):
 
 func _unhandled_input(event):
 	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_R:
-			get_tree().reload_current_scene()
-		elif event.pressed and event.keycode == KEY_ESCAPE:
-			get_tree().change_scene_to_file("res://Scenes/SongSelect.tscn")
+		if event.pressed and event.keycode == KEY_ESCAPE:
+			if !get_tree().paused:
+				$PauseMenu.visible = true
+				$PauseMenu/VBoxContainer/ResumeButton.grab_focus()
+				get_tree().paused = true
+				
 		
 func _spawn_notes():
 	if currentNote < (notes.size() - 1):
 		if $Conductor.songPosition >= notes[currentNote]:
 			instance = note.instantiate()
-			instance.initialize(lanes[currentNote], currentNote, startDelay, (SettingsSingleton.speedAdd / (bpm / 138)))
+			instance.initialize(lanes[currentNote], currentNote, startDelay, (SettingsSingleton.speedAdd / (bpm / 138.0)))
 			currentNote += 1
 			add_child(instance)
 			instance.connect("destroyed", _on_note_destroy)
@@ -79,9 +83,13 @@ func _on_note_destroy(index, hit):
 	var offset = (notes[index] * -1) + adjustedSongPosition
 	if hit:
 		notesHit += 1
+		currentCombo += 1
+		if currentCombo > maxCombo:
+			maxCombo = currentCombo
+		$Control/ComboLabel.set_text("X" + str(currentCombo))
 		$AudioStreamPlayer.play()
 		if offset < perfectTimingWindow && offset > (perfectTimingWindow * -1):
-			$Control/JudgementLabel.set_text("Perfect")
+			$Control/JudgementLabel.set_text("Perfect!")
 			score += 100
 			perfects += 1
 			$Control/ScoreLabel.set_text("%05d" % score)
@@ -93,16 +101,18 @@ func _on_note_destroy(index, hit):
 		elif offset >= perfectTimingWindow:
 			$Control/JudgementLabel.set_text("Late")
 			score += 25
-			earlys += 1
+			lates += 1
 			$Control/ScoreLabel.set_text("%05d" % score)
 		elif offset <= (perfectTimingWindow * -1):
 			$Control/JudgementLabel.set_text("Early")
 			score += 25
-			lates += 1
+			earlys += 1
 			$Control/ScoreLabel.set_text("%05d" % score)
 	else:
 		misses += 1
+		currentCombo = 0
 		print("miss")
+		$Control/ComboLabel.set_text("")
 		$Control/JudgementLabel.set_text("Miss")
 	currentPercentage = ((notesHit - (goods * 0.1) - (earlys * 0.3) - (lates * 0.3)) / (index + 1.0)) * 100.0
 	$Control/PercentageLabel.set_text("%4.2f" % currentPercentage + "%")
@@ -138,6 +148,7 @@ func _on_level_end_timer_timeout():
 	ScoreSingleton.misses = misses
 	ScoreSingleton.score = score
 	ScoreSingleton.percentage = currentPercentage
+	ScoreSingleton.maxCombo = maxCombo
 	ScoreSingleton.rank = $Control/RankLabel.get_text()
 	ScoreSingleton.songName = songName
 	get_tree().change_scene_to_file("res://Scenes/ResultScreen.tscn")

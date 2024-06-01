@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dc0jt36qm27rq"]
+[gd_scene load_steps=16 format=3 uid="uid://dc0jt36qm27rq"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_xsr4u"]
 [ext_resource type="Texture2D" uid="uid://ot32ewxdvuna" path="res://Sprites/game/background.png" id="2_5mxam"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://dgds6huo7ibit" path="res://Fonts/hemi head bd it.otf" id="5_ek40v"]
 [ext_resource type="PackedScene" uid="uid://bqgyu67qg8580" path="res://Scenes/ArrowButton.tscn" id="5_tjads"]
 [ext_resource type="Script" path="res://Scripts/ScoreDisplay.gd" id="5_yrhbh"]
+[ext_resource type="Script" path="res://Scripts/PauseManager.gd" id="8_dw1es"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_73r6v"]
 font = ExtResource("5_ek40v")
@@ -18,7 +19,22 @@ shadow_size = 0
 shadow_color = Color(1, 1, 1, 0)
 shadow_offset = Vector2(0, 0)
 
+[sub_resource type="Theme" id="Theme_lbwhi"]
+default_font = ExtResource("5_ek40v")
+default_font_size = 45
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i43rm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0foqs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_08gdp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_65rdi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vqu7q"]
+
 [node name="Game" type="Node2D"]
+process_mode = 1
 top_level = true
 script = ExtResource("1_xsr4u")
 
@@ -75,9 +91,29 @@ pivot_offset = Vector2(384, 384)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.250333
-anchor_top = 0.833333
+anchor_top = 0.791667
 anchor_right = 0.250333
-anchor_bottom = 0.833333
+anchor_bottom = 0.791667
+offset_left = -128.256
+offset_top = -32.0
+offset_right = 127.744
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 32)
+label_settings = SubResource("LabelSettings_73r6v")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_yrhbh")
+metadata/_edit_use_anchors_ = true
+
+[node name="ComboLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.250333
+anchor_top = 0.875
+anchor_right = 0.250333
+anchor_bottom = 0.875
 offset_left = -128.256
 offset_top = -32.0
 offset_right = 127.744
@@ -158,7 +194,89 @@ metadata/_edit_use_anchors_ = true
 wait_time = 0.5
 one_shot = true
 
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 2
+visible = false
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 768.0
+offset_bottom = 768.0
+script = ExtResource("8_dw1es")
+
+[node name="DarkenGame" type="ColorRect" parent="PauseMenu"]
+layout_mode = 0
+offset_right = 768.0
+offset_bottom = 768.0
+color = Color(0, 0, 0, 0.392157)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 256.0
+offset_right = 512.0
+offset_bottom = 512.0
+pivot_offset = Vector2(128, 128)
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitSongButton")
+theme = SubResource("Theme_lbwhi")
+theme_override_colors/font_color = Color(0.231373, 0.32549, 0.886275, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i43rm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0foqs")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_08gdp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_65rdi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vqu7q")
+text = "Resume"
+flat = true
+
+[node name="RestartButton" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_lbwhi")
+theme_override_colors/font_color = Color(0.231373, 0.32549, 0.886275, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i43rm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0foqs")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_08gdp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_65rdi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vqu7q")
+text = "Restart"
+flat = true
+
+[node name="QuitSongButton" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../ResumeButton")
+theme = SubResource("Theme_lbwhi")
+theme_override_colors/font_color = Color(0.231373, 0.32549, 0.886275, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i43rm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0foqs")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_08gdp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_65rdi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vqu7q")
+text = "Quit Song"
+flat = true
+
 [connection signal="beat" from="Conductor" to="Control/JudgementLabel" method="_on_conductor_beat"]
+[connection signal="beat" from="Conductor" to="Control/ComboLabel" method="_on_conductor_beat"]
 [connection signal="beat" from="Conductor" to="Control/ScoreLabel" method="_on_conductor_beat"]
 [connection signal="beat" from="Conductor" to="Control/PercentageLabel" method="_on_conductor_beat"]
 [connection signal="beat" from="Conductor" to="Control/RankLabel" method="_on_conductor_beat"]
@@ -168,3 +286,6 @@ one_shot = true
 [connection signal="notePressed" from="DownArrow" to="." method="_on_Note_Pressed"]
 [connection signal="notePressed" from="RightArrow" to="." method="_on_Note_Pressed"]
 [connection signal="timeout" from="LevelEndTimer" to="." method="_on_level_end_timer_timeout"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/RestartButton" to="PauseMenu" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/QuitSongButton" to="PauseMenu" method="_on_quit_song_button_pressed"]

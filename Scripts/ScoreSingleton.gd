@@ -6,6 +6,7 @@ var goods = 999
 var earlys = 999
 var lates = 999
 var misses = 0
+var maxCombo = 999
 var percentage = 100
 var rank = "SS"
 var songName = "Determination"

@@ -4,8 +4,8 @@ import pretty_midi
 def get_midi_info(midi_file_path):
     midi_data = pretty_midi.PrettyMIDI(midi_file_path)
     midi_info = []
-    midi_info.append({"bpm": 180})
-    midi_info.append({"beatsPerBar": 4})
+    midi_info.append({"bpm": 80})
+    midi_info.append({"beatsPerBar": 3})
     midi_info.append({"chart": []})
     for instrument in midi_data.instruments:
         for note in instrument.notes:
@@ -23,7 +23,7 @@ def get_midi_info(midi_file_path):
     return midi_info
 
 # Caminho do arquivo MIDI a ser processado
-midi_file_path = "race.mid"
+midi_file_path = "time.mid"
 
 # Obtém os tempos de início das notas chamando a função get_note_start_times
 midi_info = get_midi_info(midi_file_path)

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://crar6y6scjnkl"
+path="res://.godot/imported/song.ogg-4868092cae00b1488413a5a8467078fa.oggvorbisstr"
+
+[deps]
+
+source_file="res://Charts/Ticking Village/song.ogg"
+dest_files=["res://.godot/imported/song.ogg-4868092cae00b1488413a5a8467078fa.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

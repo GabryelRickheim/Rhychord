@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://cb3gw5qd5ffgb"]
+
+[ext_resource type="Script" path="res://Scripts/TitleScreen.gd" id="1_ue2fe"]
+[ext_resource type="Texture2D" uid="uid://ot32ewxdvuna" path="res://Sprites/game/background.png" id="2_31fd6"]
+[ext_resource type="PackedScene" uid="uid://chkaq2yi4t8ht" path="res://Scenes/Conductor.tscn" id="3_fg7d5"]
+[ext_resource type="AudioStream" uid="uid://bvcxkgyyevp2s" path="res://Sound/Lydia ~Main Menu~.ogg" id="4_0y4fx"]
+[ext_resource type="Texture2D" uid="uid://bbry7y84g4b4e" path="res://Sprites/game/Rhychord.png" id="5_qwoqv"]
+[ext_resource type="Script" path="res://Scripts/TitleScreenLogo.gd" id="6_s03ph"]
+[ext_resource type="FontFile" uid="uid://dgds6huo7ibit" path="res://Fonts/hemi head bd it.otf" id="7_itghg"]
+[ext_resource type="AudioStream" uid="uid://bdgehxkcplrlt" path="res://Sound/select.wav" id="8_v85uw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v48wc"]
+font = ExtResource("7_itghg")
+font_size = 40
+font_color = Color(0.231373, 0.32549, 0.886275, 1)
+outline_size = 8
+outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+shadow_size = 0
+shadow_color = Color(1, 1, 1, 0)
+shadow_offset = Vector2(0, 0)
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ue2fe")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 768.0
+offset_bottom = 768.0
+pivot_offset = Vector2(384, 384)
+texture = ExtResource("2_31fd6")
+
+[node name="Conductor" parent="." instance=ExtResource("3_fg7d5")]
+stream = ExtResource("4_0y4fx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 736.0
+offset_bottom = 289.0
+pivot_offset = Vector2(352, 129)
+texture = ExtResource("5_qwoqv")
+script = ExtResource("6_s03ph")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 544.0
+offset_right = 713.0
+offset_bottom = 672.0
+pivot_offset = Vector2(328, 64)
+text = "Press Space to Continue/Confirm
+Press Escape to Quit/Cancel"
+label_settings = SubResource("LabelSettings_v48wc")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_s03ph")
+
+[node name="SelectSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_v85uw")
+
+[node name="LevelEndFade" type="ColorRect" parent="."]
+top_level = true
+layout_mode = 0
+offset_right = 768.0
+offset_bottom = 768.0
+color = Color(0, 0, 0, 0)
+
+[connection signal="beat" from="Conductor" to="TextureRect" method="_on_conductor_beat"]
+[connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]
+[connection signal="finished" from="SelectSFX" to="." method="_on_audio_stream_player_finished"]

@@ -20,7 +20,9 @@ func _ready():
 	tween.tween_property($Control/TotalScoreLabel, "visible_ratio", 1, (1.77))
 	$Control/TotalPercentageLabel.set_text("Percentage: " + "%4.2f" % ScoreSingleton.percentage + "%")
 	tween.tween_property($Control/TotalPercentageLabel, "visible_ratio", 1, (1.77))
-	$Control/TotalJudgementLabel.set_text("Perfect: " + str(ScoreSingleton.perfects) + "\n" +
+	$Control/TotalJudgementLabel.set_text(
+		"Max Combo: X" + str(ScoreSingleton.maxCombo) + "\n" +
+		"Perfect: " + str(ScoreSingleton.perfects) + "\n" +
 		"Good: " + str(ScoreSingleton.goods) + "\n" +
 		"Early: " + str(ScoreSingleton.earlys) + "\n" +
 		"Late: " + str(ScoreSingleton.lates) + "\n" +
@@ -38,7 +40,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	#on any key press, go to the main menu
 	if Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("ui_accept"):
 		get_tree().change_scene_to_file("res://Scenes/SongSelect.tscn")
 

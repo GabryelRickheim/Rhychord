@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://fanr6idc427o"]
+[gd_scene load_steps=21 format=3 uid="uid://fanr6idc427o"]
 
 [ext_resource type="Script" path="res://Scripts/SongSelect.gd" id="1_l3qqw"]
 [ext_resource type="Texture2D" uid="uid://ot32ewxdvuna" path="res://Sprites/game/background.png" id="2_bmcv1"]
@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://dkg5ro8haagf0" path="res://Sound/Lydia ~Menu~.ogg" id="4_mdame"]
 [ext_resource type="FontFile" uid="uid://dgds6huo7ibit" path="res://Fonts/hemi head bd it.otf" id="5_dtk8f"]
 [ext_resource type="Script" path="res://Scripts/ScoreDisplay.gd" id="6_62eal"]
+[ext_resource type="PackedScene" uid="uid://cqp6ko2tjgoo4" path="res://Scenes/SettingsMenu.tscn" id="7_1x0m7"]
+[ext_resource type="AudioStream" uid="uid://bdgehxkcplrlt" path="res://Sound/select.wav" id="8_dtdkp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_srvqn"]
 font = ExtResource("5_dtk8f")
@@ -20,6 +22,26 @@ shadow_offset = Vector2(0, 0)
 [sub_resource type="Theme" id="Theme_d0o4a"]
 default_font = ExtResource("5_dtk8f")
 default_font_size = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kgbqb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bhj6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fi6p8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0admh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5bstp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ub8aa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hkegl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3aa1n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_leb38"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_syxuj"]
 
 [node name="SongSelect" type="Node2D"]
 script = ExtResource("1_l3qqw")
@@ -55,10 +77,10 @@ pivot_offset = Vector2(384, 384)
 [node name="SongSelectLabel" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.250333
-anchor_top = 0.125021
-anchor_right = 0.250333
-anchor_bottom = 0.125021
+anchor_left = 0.208667
+anchor_top = 0.0833542
+anchor_right = 0.25424
+anchor_bottom = 0.0833542
 offset_left = -128.256
 offset_top = -32.016
 offset_right = 127.744
@@ -72,55 +94,161 @@ vertical_alignment = 1
 script = ExtResource("6_62eal")
 metadata/_edit_use_anchors_ = true
 
-[node name="SSDSelectButton" type="Button" parent="Control"]
+[node name="SettingsButton" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.333
 anchor_top = 0.24
 anchor_right = 0.958
 anchor_bottom = 0.329
-offset_left = -63.744
-offset_top = -0.320007
-offset_right = 0.255981
-offset_bottom = 0.327972
+offset_left = -223.744
+offset_top = 423.68
+offset_right = -159.744
+offset_bottom = 419.328
 pivot_offset = Vector2(272, 35)
 theme = SubResource("Theme_d0o4a")
 theme_override_colors/font_color = Color(0.231373, 0.32549, 0.886275, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 0.843137, 0, 1)
-theme_override_colors/font_focus_color = Color(0.0509804, 0.180392, 0.498039, 1)
+theme_override_colors/font_focus_color = Color(1, 0.843137, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
 theme_override_constants/outline_size = 8
-text = "Sound-Speed Dash"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kgbqb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0bhj6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fi6p8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0admh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5bstp")
+text = "Settings"
 flat = true
-alignment = 2
+alignment = 0
 
-[node name="DTMNSelectButton" type="Button" parent="Control"]
+[node name="QuitButton" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.333
-anchor_top = 0.333
+anchor_top = 0.24
 anchor_right = 0.958
-anchor_bottom = 0.423
-offset_left = -63.744
-offset_top = 0.255997
-offset_right = 0.255981
-offset_bottom = 0.135986
+anchor_bottom = 0.329
+offset_left = -223.744
+offset_top = 487.68
+offset_right = -159.744
+offset_bottom = 483.328
 pivot_offset = Vector2(272, 35)
+focus_neighbor_bottom = NodePath("../VBoxContainer/TUTSelectButton")
 theme = SubResource("Theme_d0o4a")
 theme_override_colors/font_color = Color(0.231373, 0.32549, 0.886275, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 0.843137, 0, 1)
-theme_override_colors/font_focus_color = Color(0.0509804, 0.180392, 0.498039, 1)
+theme_override_colors/font_focus_color = Color(1, 0.843137, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
 theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kgbqb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0bhj6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fi6p8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0admh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5bstp")
+text = "Quit Game"
+flat = true
+alignment = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 128.0
+offset_right = 737.0
+offset_bottom = 448.0
+
+[node name="TUTSelectButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../QuitButton")
+theme = SubResource("Theme_d0o4a")
+theme_override_colors/font_color = Color(0.231373, 0.32549, 0.886275, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kgbqb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0bhj6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fi6p8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0admh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5bstp")
+text = "Tutorial"
+flat = true
+alignment = 2
+
+[node name="TIMSelectButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_d0o4a")
+theme_override_colors/font_color = Color(0.231373, 0.32549, 0.886275, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ub8aa")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hkegl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3aa1n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_leb38")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_syxuj")
+text = "Time"
+flat = true
+alignment = 2
+
+[node name="DTMNSelectButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_d0o4a")
+theme_override_colors/font_color = Color(0.231373, 0.32549, 0.886275, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ub8aa")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hkegl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3aa1n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_leb38")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_syxuj")
 text = "Determination"
 flat = true
 alignment = 2
 
+[node name="SSDSelectButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_d0o4a")
+theme_override_colors/font_color = Color(0.231373, 0.32549, 0.886275, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kgbqb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0bhj6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fi6p8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0admh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5bstp")
+text = "Sound-Speed Dash"
+flat = true
+alignment = 2
+
+[node name="SettingsMenu" parent="." instance=ExtResource("7_1x0m7")]
+visible = false
+
+[node name="SelectSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_dtdkp")
+
 [connection signal="beat" from="Conductor" to="Control/SongSelectLabel" method="_on_conductor_beat"]
 [connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]
-[connection signal="pressed" from="Control/SSDSelectButton" to="." method="_on_ssd_select_button_pressed"]
-[connection signal="pressed" from="Control/DTMNSelectButton" to="." method="_on_dtmn_select_button_pressed"]
+[connection signal="pressed" from="Control/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Control/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/TUTSelectButton" to="." method="_on_tut_select_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/TIMSelectButton" to="." method="_on_tim_select_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/DTMNSelectButton" to="." method="_on_dtmn_select_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/SSDSelectButton" to="." method="_on_ssd_select_button_pressed"]
+[connection signal="finished" from="SelectSFX" to="." method="_on_select_sfx_finished"]
