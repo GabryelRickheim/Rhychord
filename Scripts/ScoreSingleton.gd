@@ -1,24 +1,32 @@
 extends Node
 
-var score = 99999
-var perfects = 999
-var goods = 999
-var earlys = 999
-var lates = 999
-var misses = 0
-var maxCombo = 999
-var percentage = 100
-var rank = "SS"
-var songName = "Determination"
+# Script responsável por armazenar as informações da partida atual
+# Está sempre presente na cena raiz, e é acessado por outros scripts para atualizar as informações
+
+# Variáveis que armazenam as informações da partida
+var score = 99999  # Pontuação
+var perfects = 999  # Quantidade de acertos perfeitos
+var goods = 999  # Quantidade de acertos bons
+var earlys = 999  # Quantidade de acertos adiantados
+var lates = 999  # Quantidade de acertos atrasados
+var misses = 0  # Quantidade de erros
+var maxCombo = 999  # Maior combo
+var percentage = 100  # Porcentagem de acertos
+var rank = "SS"  # Rank da partida
+var songName = "Determination"  # Nome da música
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass  # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 
+
+# Função para redefinir as informações da partida
 func reset():
 	score = 0
 	perfects = 0

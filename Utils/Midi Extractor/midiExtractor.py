@@ -1,14 +1,25 @@
 import pretty_midi
-#save pitch and start time of each note in a midi file to a json
+
+import pretty_midi
 
 def get_midi_info(midi_file_path):
+    # Carrega o arquivo MIDI
     midi_data = pretty_midi.PrettyMIDI(midi_file_path)
+
+    # Inicializa a lista de informações do MIDI
     midi_info = []
+
+    # Adiciona as informações de BPM à lista de informações do MIDI
     midi_info.append({"bpm": 80})
-    midi_info.append({"beatsPerBar": 3})
+
+    # Adiciona um gráfico vazio à lista de informações do MIDI
     midi_info.append({"chart": []})
+
+    # Itera sobre cada instrumento nos dados MIDI
     for instrument in midi_data.instruments:
+        # Itera sobre cada nota no instrumento
         for note in instrument.notes:
+            # Mapeia o pitch para uma pista específica
             if note.pitch == 48:
                 mappedPitch = 0
             elif note.pitch == 49:
@@ -19,7 +30,11 @@ def get_midi_info(midi_file_path):
                 mappedPitch = 2
             else:
                 mappedPitch = note.pitch
-            midi_info[2]["chart"].append({"lane": mappedPitch, "note": note.start})
+
+            # Adiciona as informações da nota ao gráfico na lista de informações do MIDI
+            midi_info[1]["chart"].append({"lane": mappedPitch, "note": note.start})
+
+    # Retorna a lista de informações do MIDI
     return midi_info
 
 # Caminho do arquivo MIDI a ser processado

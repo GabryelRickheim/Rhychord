@@ -1,18 +1,22 @@
 extends Node
 
-var songVolume = -6
-var hitSoundVolume = -12
-var speedAdd = 256
+# Script responsável por armazenar as configurações do jogo
+# Está sempre presente na cena raiz, e é acessado por outros scripts para atualizar as informações
 
-# Called when the node enters the scene tree for the first time.
+var songVolume = -6  # Volume da música
+var hitSoundVolume = -12  # Volume do som de acerto
+var speedAdd = 256  # Velocidade adicional das notas
+
+
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 
+
+# Função para redefinir as configurações do jogo
 func reset():
 	songVolume = -6
 	hitSoundVolume = -12
