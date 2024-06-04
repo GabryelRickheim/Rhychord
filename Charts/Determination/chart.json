@@ -1,6 +1,5 @@
 [
   { "bpm": 138 },
-  { "beatsPerBar": 4 },
   {
     "chart": [
       { "lane": 0, "note": 0.0 },

@@ -98,7 +98,7 @@ func _build_chart(chartPath):
 	var json = JSON.parse_string(contents)
 
 	# Extrai o momento em que a nota deve ser acertada e sua direção da string JSON
-	for i in json[2]["chart"]:
+	for i in json[1]["chart"]:
 		notes.append(i["note"])
 		lanes.append(i["lane"])
 

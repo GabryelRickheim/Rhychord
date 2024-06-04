@@ -205,6 +205,26 @@ text = "Time"
 flat = true
 alignment = 2
 
+[node name="NVMSelectButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_d0o4a")
+theme_override_colors/font_color = Color(0.231373, 0.32549, 0.886275, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.231373, 0.32549, 0.886275, 1)
+theme_override_colors/font_outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ub8aa")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hkegl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3aa1n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_leb38")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_syxuj")
+text = "Nevermind the Rain"
+flat = true
+alignment = 2
+
 [node name="DTMNSelectButton" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_d0o4a")
@@ -257,6 +277,7 @@ stream = ExtResource("8_dtdkp")
 [connection signal="pressed" from="Control/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/TUTSelectButton" to="." method="_on_tut_select_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/TIMSelectButton" to="." method="_on_tim_select_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/NVMSelectButton" to="." method="_on_nvm_select_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/DTMNSelectButton" to="." method="_on_dtmn_select_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/SSDSelectButton" to="." method="_on_ssd_select_button_pressed"]
 [connection signal="finished" from="SelectSFX" to="." method="_on_select_sfx_finished"]

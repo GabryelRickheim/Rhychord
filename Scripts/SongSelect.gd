@@ -9,9 +9,9 @@ func _ready():
 	$LevelEndFade.color.a = 1
 	$Conductor.initialize("res://Sound/Lydia ~Menu~.ogg", 120, 0.5)
 	$Conductor.play()
-	$Control/VBoxContainer/TUTSelectButton.grab_focus()
 	var tween = self.create_tween()
 	tween.tween_property($LevelEndFade, "color:a", 0, 0.35)
+	$Control/VBoxContainer/TUTSelectButton.grab_focus()
 
 
 func _process(_delta):
@@ -41,6 +41,10 @@ func _on_tut_select_button_pressed():
 
 func _on_tim_select_button_pressed():
 	_load_main_game("Ticking Village")
+
+
+func _on_nvm_select_button_pressed():
+	_load_main_game("Nevermind The Rain")
 
 
 # Função chamada quando um botão de seleção de música é pressionado

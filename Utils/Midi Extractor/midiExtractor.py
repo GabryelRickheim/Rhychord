@@ -10,7 +10,7 @@ def get_midi_info(midi_file_path):
     midi_info = []
 
     # Adiciona as informações de BPM à lista de informações do MIDI
-    midi_info.append({"bpm": 80})
+    midi_info.append({"bpm": 120})
 
     # Adiciona um gráfico vazio à lista de informações do MIDI
     midi_info.append({"chart": []})
@@ -38,7 +38,7 @@ def get_midi_info(midi_file_path):
     return midi_info
 
 # Caminho do arquivo MIDI a ser processado
-midi_file_path = "time.mid"
+midi_file_path = "Nevermind the Rain.mid"
 
 # Obtém os tempos de início das notas chamando a função get_note_start_times
 midi_info = get_midi_info(midi_file_path)
