@@ -111,7 +111,6 @@ func _on_note_destroy(index, hit):
 	else:
 		misses += 1
 		currentCombo = 0
-		print("miss")
 		$Control/ComboLabel.set_text("")
 		$Control/JudgementLabel.set_text("Miss")
 	currentPercentage = ((notesHit - (goods * 0.1) - (earlys * 0.3) - (lates * 0.3)) / (index + 1.0)) * 100.0

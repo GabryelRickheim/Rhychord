@@ -1,6 +1,5 @@
 extends Node2D
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$LevelEndFade.color.a = 1
@@ -36,6 +35,7 @@ func _on_tim_select_button_pressed():
 func _load_main_game(songName):
 	$Conductor.stop()
 	$SelectSFX.play()
+	set_process_unhandled_input(false)
 	var tween = self.create_tween()
 	tween.tween_property($LevelEndFade, "color:a", 1, 1.57)
 	ScoreSingleton.songName = songName

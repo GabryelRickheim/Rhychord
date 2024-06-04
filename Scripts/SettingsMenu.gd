@@ -2,6 +2,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_process_unhandled_input(false)
 	$VBoxContainer/SongVolumeContainer/SongVolumeHSlider.set_value_no_signal(
 		db_to_linear(SettingsSingleton.songVolume))
 	$VBoxContainer/HitsoundVolumeContainer/HitsoundVolumeHSlider.set_value_no_signal(
@@ -17,10 +18,15 @@ func _process(_delta):
 func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:
-			self.visible = false
-			get_parent().returnFocus()
+			_quit_menu()
+
+func _quit_menu():
+	self.visible = false
+	set_process_unhandled_input(false)
+	get_parent().returnFocus()
 
 func catchFocus():
+	set_process_unhandled_input(true)
 	$VBoxContainer/SongVolumeContainer/SongVolumeHSlider.set_value_no_signal(
 		db_to_linear(SettingsSingleton.songVolume))
 	$VBoxContainer/HitsoundVolumeContainer/HitsoundVolumeHSlider.set_value_no_signal(
@@ -49,8 +55,7 @@ func _on_song_speed_h_slider_value_changed(value):
 	SettingsSingleton.speedAdd = value
 
 func _on_button_pressed():
-	self.visible = false
-	get_parent().returnFocus()
+	_quit_menu()
 
 func _on_v_sync_check_box_toggled(toggled_on):
 	if toggled_on:
