@@ -13,7 +13,7 @@ var misses = 0  # Quantidade de erros
 var maxCombo = 999  # Maior combo
 var percentage = 100  # Porcentagem de acertos
 var rank = "SS"  # Rank da partida
-var songName = "Determination"  # Nome da música
+var songName = "Song Name Placeholder"  # Nome da música
 
 
 # Called when the node enters the scene tree for the first time.
@@ -36,4 +36,4 @@ func reset():
 	misses = 0
 	percentage = 0
 	rank = "F"
-	songName = "Determination"
+	songName = "Song Name Placeholder"

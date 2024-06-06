@@ -20,12 +20,12 @@ func _unhandled_input(event):
 			get_tree().paused = false
 			get_tree().reload_current_scene()
 		elif event.pressed and event.keycode == KEY_ESCAPE:
-			self.visible = false
-			get_tree().paused = false
+			_on_resume_button_pressed()
 
 
 # Função responsável por retomar a execução do jogo ao pressionar o botão de resume
 func _on_resume_button_pressed():
+	get_parent().set_process_unhandled_input(true)
 	self.visible = false
 	get_tree().paused = false
 

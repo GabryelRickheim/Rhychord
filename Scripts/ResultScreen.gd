@@ -71,6 +71,9 @@ func _ready():
 		tween.tween_property($Control/FinalRankLabel, "visible", true, 0)
 	if ScoreSingleton.misses == 0:
 		tween.tween_property($Control/FullComboLabel, "visible", true, 0)
+	elif ScoreSingleton.misses == 1:
+		$Control/FullComboLabel.set_text("Nice Choke!")
+		tween.tween_property($Control/FullComboLabel, "visible", true, 0)
 	tween.tween_property($LevelEndFlash, "color:a", 0, 0.2)
 	# Atualiza a variável 'finished' para permitir que o jogador saia da tela de resultados.
 	tween.tween_callback(self._set_finished)

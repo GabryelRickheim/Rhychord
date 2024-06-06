@@ -201,7 +201,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_hkegl")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3aa1n")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_leb38")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_syxuj")
-text = "Time"
+text = "Ticking Village"
 flat = true
 alignment = 2
 

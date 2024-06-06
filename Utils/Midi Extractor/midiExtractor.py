@@ -9,8 +9,10 @@ def get_midi_info(midi_file_path):
     # Inicializa a lista de informações do MIDI
     midi_info = []
 
+    bpm = 138
+
     # Adiciona as informações de BPM à lista de informações do MIDI
-    midi_info.append({"bpm": 120})
+    midi_info.append({"bpm": bpm})
 
     # Adiciona um gráfico vazio à lista de informações do MIDI
     midi_info.append({"chart": []})
@@ -32,13 +34,21 @@ def get_midi_info(midi_file_path):
                 mappedPitch = note.pitch
 
             # Adiciona as informações da nota ao gráfico na lista de informações do MIDI
-            midi_info[1]["chart"].append({"lane": mappedPitch, "note": note.start})
+            midi_info[1]["chart"].append({"lane": mappedPitch, "note": note.start, "type": 0})
+
+            if note.end > note.start + 0.3:
+                # adiciona notas em intervalos de (60 / bpm) / 8 segundos
+                count = 1
+                while (note.start + ((((60 / bpm) / 8)) * count))  < note.end:
+                    midi_info[1]["chart"].append({"lane": mappedPitch, "note": note.start + ((60 / bpm) / 8) * count, "type": 1})
+                    count += 1
+        
 
     # Retorna a lista de informações do MIDI
     return midi_info
 
 # Caminho do arquivo MIDI a ser processado
-midi_file_path = "Nevermind the Rain.mid"
+midi_file_path = "race.mid"
 
 # Obtém os tempos de início das notas chamando a função get_note_start_times
 midi_info = get_midi_info(midi_file_path)

@@ -8,9 +8,22 @@ var notes = []
 var inputs = ["left", "up", "right", "down"]
 # Tween para animação do botão
 var tween
+# Variavel que registra se o botão está sendo segurado
+var isHeld
 
 # Variavel que define a entrada que o botão representa
 @export var input = ""
+
+func _process(_delta):
+	if notes:
+		var note = notes[0]
+		if note.type == 1 and !note.hit and isHeld:
+			# Remove a nota da lista e marca como acertada
+			notes.erase(note)
+			note.hit = true
+			note.destroy()
+			# Inicia a animação do botão
+			animate()
 
 
 # Função que lida com eventos de entrada não tratados
@@ -26,19 +39,18 @@ func _unhandled_input(event):
 			if !notes.is_empty():
 				# Encontra a nota mais antiga
 				var note = notes[0]
-				for n in notes:
-					if n.index < note.index:
-						note = n
 				# Remove a nota da lista e marca como acertada
 				notes.erase(note)
 				note.hit = true
 				note.destroy()
 				# Inicia a animação do botão
 				animate()
+				isHeld = true
 		# Verifica se o botão foi solto
 		elif event.is_action_released("ui_" + input):
 			# Apaga o botão, indicando que não está pressionado
 			$AnimatedSprite2D.frame = 0
+			isHeld = false
 
 
 # Função que anima o botão quando uma nota é acertada
@@ -61,18 +73,18 @@ func _reset():
 # Função que é chamada quando uma nota entra na área do botão
 # [param note]: A nota que entrou na área do botão
 func _on_area_2d_area_entered(note):
-	# Verifica se a área corresponde à entrada do botão
+	# Verifica se a nota corresponde à entrada do botão
 	if note.lane == inputs.find(input):
-		# Adiciona a área à lista de notas
+		# Adiciona a nota à lista de notas
 		notes.append(note)
 
 
-# Função que é chamada quando uma área sai da área do botão
+# Função que é chamada quando uma nota sai da área do botão
 # [param note]: A nota que saiu da área do botão
 func _on_area_2d_area_exited(note):
-	# Verifica se a área não foi acertada e corresponde à entrada do botão
+	# Verifica se a nota não foi acertada e corresponde à entrada do botão
 	if !note.hit and (note.lane == inputs.find(input)):
-		# Remove a área da lista de notas
+		# Remove a nota da lista de notas
 		notes.erase(note)
-		# Destroi a área
+		# Destroi a nota
 		note.destroy()

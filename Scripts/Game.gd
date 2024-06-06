@@ -12,8 +12,10 @@ var goodTimingWindow = 0  # Janela de tempo para acertos bons
 var Note = preload("res://Scenes/Note.tscn")  # Cena da nota
 var notes = []  # Lista de momentos em que as notas devem ser acertadas
 var lanes = []  # Lista de direções das notas
+var types = [] # Lista dos tipos das notas
 var currentNote = 0  # Indice da próxima nota a ser gerada
 var instance = null  # Instancia da nota a ser gerada
+var noteObjects = [] # Guarda as referencias das notas instanciadas
 
 # Variaveis responsaveis pela pontuacao
 var score = 0  # Pontuação do jogador
@@ -40,9 +42,11 @@ func _ready():
 	# Obtém o caminho do arquivo de áudio e do mapa de notas com base no nome da música
 	var songPath = "res://Charts/" + songName + "/song.ogg"
 	var chartPath = "res://Charts/" + songName + "/chart.json"
-	# Chama a função _build_chart passando o caminho do arquivo de mapa das notas como argumento
+	# Chama a função _build_chart passando o caminho do arquivo de
+	# mapa das notas como argumento
 	_build_chart(chartPath)
-	# Define o volume do áudio de acerto com base no volume definido no objeto SettingsSingleton
+	# Define o volume do áudio de acerto com base no volume definido
+	# no objeto SettingsSingleton
 	$AudioStreamPlayer.volume_db = SettingsSingleton.hitSoundVolume
 	# Inicializa o objeto Conductor com o caminho do arquivo de áudio, bpm e secsPerBeat
 	$Conductor.initialize(songPath, bpm, secsPerBeat)
@@ -62,30 +66,22 @@ func _unhandled_input(event):
 			if !get_tree().paused:
 				$PauseMenu.visible = true
 				$PauseMenu/VBoxContainer/ResumeButton.grab_focus()
+				self.set_process_unhandled_input(false)
 				get_tree().paused = true
 
 
 # Função responsável por gerar as notas, chamada a cada quadro
 func _spawn_notes():
 	# Verifica se ainda há notas a serem geradas
-	if currentNote < (notes.size() - 1):
+	if currentNote < (noteObjects.size() - 1):
 		# Verifica se a posição da música é maior ou igual à posição da próxima nota
 		# Se verdadeiro, gera a próxima nota
-		if $Conductor.songPosition >= notes[currentNote]:
-			# Instancia um objeto de nota e inicializa seus atributos com base no mapa de notas
-			instance = Note.instantiate()
-			instance.initialize(
-				lanes[currentNote],
-				currentNote,
-				startDelay,
-				SettingsSingleton.speedAdd / (bpm / 138.0)
-			)
+		if $Conductor.songPosition >= noteObjects[currentNote].time:
+			# Ativa a nota atual
+			noteObjects[currentNote].visible = true
+			noteObjects[currentNote].process_mode = PROCESS_MODE_INHERIT
 			# Atualiza o índice da próxima nota
 			currentNote += 1
-			# Adiciona a nota como filho do nó atual
-			add_child(instance)
-			# Conecta o sinal da nota à função _on_note_destroy
-			instance.connect("destroyed", _on_note_destroy)
 
 
 # Esta função é responsável por construir o mapa de notas com base no arquivo JSON
@@ -98,9 +94,11 @@ func _build_chart(chartPath):
 	var json = JSON.parse_string(contents)
 
 	# Extrai o momento em que a nota deve ser acertada e sua direção da string JSON
+	# Também extrai se é do tipo seta ou trilha
 	for i in json[1]["chart"]:
 		notes.append(i["note"])
 		lanes.append(i["lane"])
+		types.append(i["type"])
 
 	# Calcula janelas de tempo com base no BPM da música
 	bpm = json[0]["bpm"]
@@ -109,13 +107,39 @@ func _build_chart(chartPath):
 	perfectTimingWindow = (secsPerBeat / 12) * (bpm / 138)
 	goodTimingWindow = (secsPerBeat / 8) * (bpm / 138)
 
+	# Instancia os objetos de nota e inicializa seus atributos com
+	# base no mapa de notas, e então adiciona-os na lista de notas
+	for i in range(0, notes.size()):
+		instance = Note.instantiate()
+		instance.initialize(
+			notes[i],
+			lanes[i],
+			i,
+			startDelay,
+			SettingsSingleton.speedAdd / (bpm / 138.0),
+			types[i]
+		)
+		instance.visible = false
+		instance.process_mode = PROCESS_MODE_DISABLED
+		noteObjects.append(instance)
+		# Salva as trilhas e as setas como filhos de nós diferentes
+		# Caso contrário, trilhas renderizam sobre as setas
+		if instance.type == 0:
+			$NoteParent.add_child(instance)
+		else:
+			$TrailParent.add_child(instance)
+			$TrailParent.move_child(instance, $TrailParent.get_child_count())
+		# Conecta o sinal da nota à função _on_note_destroy
+		instance.connect("destroyed", _on_note_destroy)
+
 
 # Função chamada quando uma nota é destruída.
 # Responsável por calcular a pontuação do jogador e atualizar a interface do usuário
-func _on_note_destroy(index, hit):
+func _on_note_destroy(index, hit, type):
 	# Verifica se a nota destruida foi acertada
 	if hit:
-		# Calcula a diferença entre o momento em que a nota foi acertada e o momento em que deveria ser acertada
+		# Calcula a diferença entre o momento em que a nota foi acertada
+		# e o momento em que deveria ser acertada
 		var adjustedSongPosition = $Conductor.songPosition - startDelay
 		var offset = (notes[index] * -1) + adjustedSongPosition
 
@@ -126,12 +150,17 @@ func _on_note_destroy(index, hit):
 		# Atualiza o combo máximo se o combo atual for maior
 		if currentCombo > maxCombo:
 			maxCombo = currentCombo
-		# Toca o áudio de acerto
-		$AudioStreamPlayer.play()
-
-		# Calcula a pontuação de acordo com o quão próximo o jogador acertou a nota em relação a musica
+		# Toca o som de acerto, se a nota for do tipo seta
+		if type == 0:
+			$AudioStreamPlayer.play()
+		# Calcula a pontuação de acordo com o quão próximo o jogador
+		# acertou a nota em relação a musica
 		# e atualiza a interface do usuário com base no resultado
-		if offset < perfectTimingWindow && offset > (perfectTimingWindow * -1):
+		if type == 1:
+			score += 10
+			perfects += 1
+			$Control/ScoreLabel.set_text("%05d" % score)
+		elif offset < perfectTimingWindow && offset > (perfectTimingWindow * -1):
 			$Control/JudgementLabel.set_text("Perfect!")
 			score += 100
 			perfects += 1

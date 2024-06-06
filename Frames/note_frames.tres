@@ -1,9 +1,13 @@
-[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dw2ksgb08agyv"]
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://dw2ksgb08agyv"]
 
 [ext_resource type="Texture2D" uid="uid://54m1j7r6jxnd" path="res://Sprites/game/arrow_button/note_up.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://bf2xp1ux15qv8" path="res://Sprites/game/arrow_button/note_right.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://bqkv4mk11vcv8" path="res://Sprites/game/arrow_button/note_left.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://cyqd412ljfgwt" path="res://Sprites/game/arrow_button/note_down.png" id="4_cfine"]
+[ext_resource type="Texture2D" uid="uid://q18xkfgo73yc" path="res://Sprites/game/arrow_button/trail_left.png" id="5_5x420"]
+[ext_resource type="Texture2D" uid="uid://c0ijvk07jfj8d" path="res://Sprites/game/arrow_button/trail_up.png" id="6_wskmd"]
+[ext_resource type="Texture2D" uid="uid://bv2rvo16t8a3g" path="res://Sprites/game/arrow_button/trail_right.png" id="7_mtvjv"]
+[ext_resource type="Texture2D" uid="uid://b2ehwqu4fo821" path="res://Sprites/game/arrow_button/trail_down.png" id="8_s5g2e"]
 
 [resource]
 animations = [{
@@ -19,6 +23,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_cfine")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5x420")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wskmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mtvjv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s5g2e")
 }],
 "loop": true,
 "name": &"default",
