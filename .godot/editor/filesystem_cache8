@@ -3,45 +3,39 @@ ea4bc82a6ad023ab7ee23ee620429895
 export_presets.cfg::TextFile::-1::1717688354::0::1::::<><>::
 icon.svg::CompressedTexture2D::1081590468184906347::1712858009::1712858040::1::::<><>::
 README.md::TextFile::-1::1717766881::0::1::::<><>::
-::res://Charts/::1731062610
-::res://Charts/Determination/::1731052900
+::res://Charts/::1731063712
+::res://Charts/Determination/::1731063591
 chart.json::JSON::-1::1717684365::0::1::::<><>::
-score.txt::TextFile::-1::1731054883::0::1::::<><>::
 song.ogg::AudioStreamOggVorbis::2583610088717358714::1715992384::1716550959::1::::<><>::
-::res://Charts/Determination - Copia/::1731062610
+::res://Charts/Determination - Copia/::1731063712
 chart.json::JSON::-1::1717684365::0::1::::<><>::
-score.txt::TextFile::-1::1731054883::0::1::::<><>::
-song.ogg::AudioStreamOggVorbis::2583610088717358714::1715992384::1731062613::1::::<><>::
+song.ogg::AudioStreamOggVorbis::2583610088717358714::1715992384::1731063715::1::::<><>::
 ::res://Charts/Nevermind The Rain/::1717670631
 chart.json::JSON::-1::1717680703::0::1::::<><>::
 chart_old.json::JSON::-1::1717506050::0::1::::<><>::
 song.ogg::AudioStreamOggVorbis::7140936106834283151::1717622503::1717622638::1::::<><>::
-::res://Charts/Nevermind The Rain - Copia/::1731062610
+::res://Charts/Nevermind The Rain - Copia/::1731063712
 chart.json::JSON::-1::1717680703::0::1::::<><>::
 chart_old.json::JSON::-1::1717506050::0::1::::<><>::
-song.ogg::AudioStreamOggVorbis::7140936106834283151::1717622503::1731062613::1::::<><>::
-::res://Charts/Sound-Speed Dash/::1731055440
+song.ogg::AudioStreamOggVorbis::7140936106834283151::1717622503::1731063715::1::::<><>::
+::res://Charts/Sound-Speed Dash/::1731063597
 chart.json::JSON::-1::1717684555::0::1::::<><>::
-score.txt::TextFile::-1::1731055440::0::1::::<><>::
 song.ogg::AudioStreamOggVorbis::4198138645541011959::1716874126::1716874128::1::::<><>::
-::res://Charts/Sound-Speed Dash - Copia/::1731062610
+::res://Charts/Sound-Speed Dash - Copia/::1731063712
 chart.json::JSON::-1::1717684555::0::1::::<><>::
-score.txt::TextFile::-1::1731055440::0::1::::<><>::
-song.ogg::AudioStreamOggVorbis::4198138645541011959::1716874126::1731062613::1::::<><>::
-::res://Charts/Ticking Village/::1731052041
+song.ogg::AudioStreamOggVorbis::4198138645541011959::1716874126::1731063715::1::::<><>::
+::res://Charts/Ticking Village/::1731063600
 chart.json::JSON::-1::1731055565::0::1::::<><>::
-score.txt::TextFile::-1::1731053106::0::1::::<><>::
 song.ogg::AudioStreamOggVorbis::5967140566991054075::1717236526::1717243874::1::::<><>::
-::res://Charts/Ticking Village - Copia/::1731062610
+::res://Charts/Ticking Village - Copia/::1731063712
 chart.json::JSON::-1::1731055565::0::1::::<><>::
-score.txt::TextFile::-1::1731053106::0::1::::<><>::
-song.ogg::AudioStreamOggVorbis::5967140566991054075::1717236526::1731062613::1::::<><>::
-::res://Charts/Tutorial (Go for a Perfect!)/::1717243842
+song.ogg::AudioStreamOggVorbis::5967140566991054075::1717236526::1731063715::1::::<><>::
+::res://Charts/Tutorial (Go for a Perfect!)/::1731063603
 chart.json::JSON::-1::1717683685::0::1::::<><>::
 song.ogg::AudioStreamOggVorbis::6511314877945603138::1717243045::1717243842::1::::<><>::
-::res://Charts/Tutorial (Go for a Perfect!) - Copia/::1731062610
+::res://Charts/Tutorial (Go for a Perfect!) - Copia/::1731063712
 chart.json::JSON::-1::1717683685::0::1::::<><>::
-song.ogg::AudioStreamOggVorbis::6511314877945603138::1717243045::1731062613::1::::<><>::
+song.ogg::AudioStreamOggVorbis::6511314877945603138::1717243045::1731063716::1::::<><>::
 ::res://Fonts/::1716859959
 hemi head bd it.otf::FontFile::7587736910889238823::1411752886::1716859959::1::::<><>::
 Schluber.ttf::FontFile::3425776419866614408::1378235822::1716859761::1::::<><>::
@@ -49,7 +43,7 @@ VCR_OSD_MONO_1.001.ttf::FontFile::5315431196620192604::1427836911::1716849069::1
 ::res://Frames/::1717674119
 arrow_button_frames.tres::SpriteFrames::470589978035979423::1716585002::0::1::::<><>::uid://brmersjnas3y6::::res://Sprites/game/arrow_button/arrow_button_on.png<>uid://bh2ijpsaijj4l::::res://Sprites/game/arrow_button/arrow_button_off.png
 note_frames.tres::SpriteFrames::8759794442558480077::1717674119::0::1::::<><>::uid://54m1j7r6jxnd::::res://Sprites/game/arrow_button/note_up.png<>uid://bf2xp1ux15qv8::::res://Sprites/game/arrow_button/note_right.png<>uid://bqkv4mk11vcv8::::res://Sprites/game/arrow_button/note_left.png<>uid://cyqd412ljfgwt::::res://Sprites/game/arrow_button/note_down.png<>uid://q18xkfgo73yc::::res://Sprites/game/arrow_button/trail_left.png<>uid://c0ijvk07jfj8d::::res://Sprites/game/arrow_button/trail_up.png<>uid://bv2rvo16t8a3g::::res://Sprites/game/arrow_button/trail_right.png<>uid://b2ehwqu4fo821::::res://Sprites/game/arrow_button/trail_down.png
-::res://Scenes/::1731062574
+::res://Scenes/::1731063674
 ArrowButton.tscn::PackedScene::3523323050524384347::1731059977::0::1::::<><>::res://Scripts/ArrowButton.gd<>uid://gx7svx3jnjnj::::res://Frames/arrow_button_frames.tres
 ButtonTheme.tres::Theme::352347406040589431::1731060938::0::1::::<><>::uid://dgds6huo7ibit::::res://Fonts/hemi head bd it.otf
 Conductor.tscn::PackedScene::5284837078704287085::1731059977::0::1::::<><>::res://Scripts/Conductor.gd
@@ -57,23 +51,23 @@ Game.tscn::PackedScene::7351831084512796074::1731059977::0::1::::<><>::res://Scr
 Note.tscn::PackedScene::6542586292563387370::1731059977::0::1::::<><>::uid://dw2ksgb08agyv::::res://Frames/note_frames.tres<>uid://be8urbjt61ef::::res://Sprites/game/arrow_button/particle.png<>res://Scripts/Note.gd
 ResultScreen.tscn::PackedScene::5657936295402264641::1731059977::0::1::::<><>::res://Scripts/ResultScreen.gd<>uid://ot32ewxdvuna::::res://Sprites/game/background.png<>uid://dgds6huo7ibit::::res://Fonts/hemi head bd it.otf
 SettingsMenu.tscn::PackedScene::5928729394532600081::1731059978::0::1::::<><>::res://Scripts/SettingsMenu.gd<>uid://cwrm8qwfokkw0::::res://Sound/soft-hitnormal.wav
-SongSelect.tscn::PackedScene::351765538314950050::1731062574::0::1::::<><>::res://Scripts/SongSelect.gd<>uid://ot32ewxdvuna::::res://Sprites/game/background.png<>uid://chkaq2yi4t8ht::::res://Scenes/Conductor.tscn<>uid://dkg5ro8haagf0::::res://Sound/Lydia ~Menu~.ogg<>uid://dgds6huo7ibit::::res://Fonts/hemi head bd it.otf<>res://Scripts/ScoreDisplay.gd<>uid://faxd0rgm0va2::::res://Scenes/ButtonTheme.tres<>uid://cqp6ko2tjgoo4::::res://Scenes/SettingsMenu.tscn<>res://Scripts/ScoreDisplayBox.gd<>uid://bdgehxkcplrlt::::res://Sound/select.wav
-SongSelectButton.tscn::PackedScene::4924116391433715947::1731062574::0::1::::<><>::uid://faxd0rgm0va2::::res://Scenes/ButtonTheme.tres<>res://Scripts/SongSelectButton.gd
+SongSelect.tscn::PackedScene::351765538314950050::1731063674::0::1::::<><>::res://Scripts/SongSelect.gd<>uid://ot32ewxdvuna::::res://Sprites/game/background.png<>uid://chkaq2yi4t8ht::::res://Scenes/Conductor.tscn<>uid://dkg5ro8haagf0::::res://Sound/Lydia ~Menu~.ogg<>uid://dgds6huo7ibit::::res://Fonts/hemi head bd it.otf<>res://Scripts/ScoreDisplay.gd<>uid://faxd0rgm0va2::::res://Scenes/ButtonTheme.tres<>uid://cqp6ko2tjgoo4::::res://Scenes/SettingsMenu.tscn<>res://Scripts/ScoreDisplayBox.gd<>uid://bdgehxkcplrlt::::res://Sound/select.wav
+SongSelectButton.tscn::PackedScene::4924116391433715947::1731063674::0::1::::<><>::uid://faxd0rgm0va2::::res://Scenes/ButtonTheme.tres<>res://Scripts/SongSelectButton.gd
 TitleScreen.tscn::PackedScene::4901237978154388553::1731059977::0::1::::<><>::res://Scripts/TitleScreen.gd<>uid://ot32ewxdvuna::::res://Sprites/game/background.png<>uid://chkaq2yi4t8ht::::res://Scenes/Conductor.tscn<>uid://bvcxkgyyevp2s::::res://Sound/Lydia ~Main Menu~.ogg<>uid://bbry7y84g4b4e::::res://Sprites/game/Rhychord.png<>res://Scripts/TitleScreenLogo.gd<>uid://dgds6huo7ibit::::res://Fonts/hemi head bd it.otf<>uid://bdgehxkcplrlt::::res://Sound/select.wav
-::res://Scripts/::1731062559
+::res://Scripts/::1731063175
 ArrowButton.gd::GDScript::-1::1717686086::0::1::::<>Area2D<>::
 Conductor.gd::GDScript::-1::1717478312::0::1::::<>AudioStreamPlayer<>::
 Game.gd::GDScript::-1::1731060938::0::1::::<>Node2D<>::
 Note.gd::GDScript::-1::1717685164::0::1::::<>Area2D<>::
 PauseManager.gd::GDScript::-1::1717678503::0::1::::<>Node<>::
-SongSelectButton.gd::GDScript::-1::1731062559::0::1::::<>Button<>::
+SongSelect.gd::GDScript::-1::1731063460::0::1::::<>Node2D<>::
+SongSelectButton.gd::GDScript::-1::1731063073::0::1::::<>Button<>::
 ResultScreen.gd::GDScript::-1::1731049938::0::1::::<>Node2D<>::
 ScoreDisplay.gd::GDScript::-1::1731060938::0::1::::<>Label<>::
-ScoreDisplayBox.gd::GDScript::-1::1731057798::0::1::::<>Control<>::
+ScoreDisplayBox.gd::GDScript::-1::1731062844::0::1::::<>Control<>::
 ScoreSingleton.gd::GDScript::-1::1731049078::0::1::::<>Node<>::
 SettingsMenu.gd::GDScript::-1::1731060938::0::1::::<>Control<>::
 SettingsSingleton.gd::GDScript::-1::1717478812::0::1::::<>Node<>::
-SongSelect.gd::GDScript::-1::1731060938::0::1::::<>Node2D<>::
 TitleScreen.gd::GDScript::-1::1717687390::0::1::::<>Control<>::
 TitleScreenLogo.gd::GDScript::-1::1717479192::0::1::::<>Control<>::
 ::res://Sound/::1717227994
