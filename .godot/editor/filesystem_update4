@@ -1,9 +1,0 @@
-res://Scenes/SongSelect.tscn
-res://Scenes/ButtonTheme.tres
-res://Scripts/Game.gd
-res://Scripts/ScoreDisplay.gd
-res://Scripts/SettingsMenu.gd
-res://Scripts/SongSelect.gd
-res://Scenes/SongSelectButton.tscn
-res://Scripts/SongSelectButton.gd
-res://Scripts/ScoreDisplayBox.gd
