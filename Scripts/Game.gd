@@ -70,7 +70,7 @@ func _unhandled_input(event):
 				get_tree().paused = true
 
 
-# Função responsável por gerar as notas, chamada a cada quadro
+# Função responsável por ativar as notas, chamada a cada quadro
 func _spawn_notes():
 	# Verifica se ainda há notas a serem geradas
 	if currentNote < (noteObjects.size() - 1):
@@ -200,7 +200,8 @@ func _on_note_destroy(index, hit, type):
 	)
 	$Control/PercentageLabel.set_text("%4.2f" % currentPercentage + "%")
 
-	# Atualiza o rank do jogador com base na porcentagem de acertos
+	# Atualiza o rank do jogador com base
+	# na porcentagem de acertos
 	if currentPercentage == 100:
 		$Control/RankLabel.set_text("SS")
 	elif currentPercentage >= 95:
