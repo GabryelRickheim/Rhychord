@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmu0nccwb82dx"]
+[gd_scene load_steps=9 format=3 uid="uid://cmu0nccwb82dx"]
 
 [ext_resource type="Script" path="res://Scripts/ResultScreen.gd" id="1_v2wpr"]
 [ext_resource type="Texture2D" uid="uid://ot32ewxdvuna" path="res://Sprites/game/background.png" id="2_1pmbj"]
@@ -7,9 +7,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_4icaa"]
 font = ExtResource("2_24107")
 font_size = 50
-font_color = Color(0.231373, 0.32549, 0.886275, 1)
-outline_size = 8
-outline_color = Color(0.0203216, 0.102389, 0.312126, 1)
+font_color = Color(0.980392, 0.976471, 0.964706, 1)
+outline_size = 10
+outline_color = Color(0.454902, 0.447059, 0.423529, 1)
 shadow_size = 0
 shadow_color = Color(1, 1, 1, 0)
 shadow_offset = Vector2(0, 0)
@@ -17,9 +17,9 @@ shadow_offset = Vector2(0, 0)
 [sub_resource type="LabelSettings" id="LabelSettings_eo6ym"]
 font = ExtResource("2_24107")
 font_size = 200
-font_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+font_color = Color(0.152941, 0.152941, 0.141176, 1)
 outline_size = 15
-outline_color = Color(0.231373, 0.32549, 0.886275, 1)
+outline_color = Color(0.980392, 0.976471, 0.964706, 1)
 shadow_size = 0
 shadow_color = Color(1, 1, 1, 0)
 shadow_offset = Vector2(0, 0)
@@ -37,6 +37,16 @@ shadow_offset = Vector2(0, 0)
 [sub_resource type="LabelSettings" id="LabelSettings_2inqf"]
 font = ExtResource("2_24107")
 font_size = 45
+font_color = Color(1, 0.843137, 0, 1)
+outline_size = 7
+outline_color = Color(0.305882, 0.25098, 0, 1)
+shadow_size = 0
+shadow_color = Color(1, 1, 1, 0)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xcofd"]
+font = ExtResource("2_24107")
+font_size = 30
 font_color = Color(1, 0.843137, 0, 1)
 outline_size = 7
 outline_color = Color(0.305882, 0.25098, 0, 1)
@@ -226,6 +236,27 @@ grow_vertical = 2
 pivot_offset = Vector2(192, 32)
 text = "Full Combo!!!"
 label_settings = SubResource("LabelSettings_2inqf")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="NewHighScoreLabel" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.171583
+anchor_top = 0.187521
+anchor_right = 0.171583
+anchor_bottom = 0.187521
+offset_left = -99.776
+offset_top = -32.016
+offset_right = 100.224
+offset_bottom = 31.984
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(192, 32)
+text = "New Record!"
+label_settings = SubResource("LabelSettings_xcofd")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true

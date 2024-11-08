@@ -2,6 +2,9 @@ extends Node2D
 
 # Script responsável pela tela de seleção de músicas
 
+var SongSelectButton = preload("res://Scenes/SongSelectButton.tscn")
+var instance = null
+
 
 # Função chamada quando o nó é criado
 # Realiza o fade in e toca a música de fundo
@@ -10,8 +13,9 @@ func _ready():
 	$Conductor.initialize("res://Sound/Lydia ~Menu~.ogg", 120, 0.5)
 	$Conductor.play()
 	var tween = self.create_tween()
+	_build_song_select_buttons()
+	$Control/ScrollContainer/VBoxContainer.get_child(0).grab_focus()
 	tween.tween_property($LevelEndFade, "color:a", 0, 0.35)
-	$Control/VBoxContainer/TUTSelectButton.grab_focus()
 
 
 func _process(_delta):
@@ -25,26 +29,33 @@ func _on_conductor_finished():
 	$Conductor.play()
 
 
+func _build_song_select_buttons():
+	var dir = DirAccess.open("res://Charts")
+	var songs = []
+	if dir:
+		dir.list_dir_begin()
+		var folder_name = dir.get_next()
+		while folder_name != "":
+			if dir.current_is_dir():
+				songs.append(folder_name)
+			folder_name = dir.get_next()
+		dir.list_dir_end()
+		for i in range(songs.size()):
+			var button = SongSelectButton.instantiate()
+			button.initialize(songs[i])
+			button.connect("songFocused", _on_song_focused)
+			button.connect("songSelected", _on_song_selected)
+			$Control/ScrollContainer/VBoxContainer.add_child(button)
+
+
 # Funções chamadas quando os botões de seleção de música são pressionados
 # Carregam a cena do jogo principal com a música selecionada
-func _on_ssd_select_button_pressed():
-	_load_main_game("Sound-Speed Dash")
+func _on_song_selected(songName):
+	_load_main_game(songName)
 
 
-func _on_dtmn_select_button_pressed():
-	_load_main_game("Determination")
-
-
-func _on_tut_select_button_pressed():
-	_load_main_game("Tutorial (Go for a Perfect!)")
-
-
-func _on_tim_select_button_pressed():
-	_load_main_game("Ticking Village")
-
-
-func _on_nvm_select_button_pressed():
-	_load_main_game("Nevermind The Rain")
+func _on_song_focused(songName):
+	$Control/ScoreDisplay.set_high_score_label(songName)
 
 
 # Função chamada quando um botão de seleção de música é pressionado
@@ -52,7 +63,7 @@ func _on_nvm_select_button_pressed():
 func _load_main_game(songName):
 	$Conductor.stop()
 	$SelectSFX.play()
-	for node in $Control/VBoxContainer.get_children():
+	for node in $Control/ScrollContainer/VBoxContainer.get_children():
 		if node is Button:
 			node.disabled = true
 	for node in $Control.get_children():

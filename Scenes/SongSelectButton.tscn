@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccfjqibn6cchv"]
+
+[ext_resource type="Theme" uid="uid://faxd0rgm0va2" path="res://Scenes/ButtonTheme.tres" id="1_c2g6m"]
+[ext_resource type="Script" path="res://Scripts/SongSelectButton.gd" id="2_hj6q4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kgbqb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bhj6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fi6p8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0admh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5bstp"]
+
+[node name="TUTSelectButton" type="Button"]
+offset_right = 400.0
+offset_bottom = 39.0
+size_flags_horizontal = 10
+theme = ExtResource("1_c2g6m")
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kgbqb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0bhj6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fi6p8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0admh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5bstp")
+flat = true
+alignment = 2
+script = ExtResource("2_hj6q4")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

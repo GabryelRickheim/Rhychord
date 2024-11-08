@@ -28,10 +28,10 @@ shape = SubResource("1")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
-amount = 10
+amount = 13
 process_material = SubResource("ParticleProcessMaterial_g3t7c")
 texture = ExtResource("3_eqdg6")
-lifetime = 0.2
+lifetime = 0.25
 one_shot = true
 explosiveness = 1.0
 

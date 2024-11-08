@@ -12,9 +12,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_v48wc"]
 font = ExtResource("7_itghg")
 font_size = 40
-font_color = Color(0.231373, 0.32549, 0.886275, 1)
-outline_size = 8
-outline_color = Color(0.0156863, 0.0862745, 0.27451, 1)
+font_color = Color(0.980392, 0.976471, 0.964706, 1)
+outline_size = 10
+outline_color = Color(0.454902, 0.447059, 0.423529, 1)
 shadow_size = 0
 shadow_color = Color(1, 1, 1, 0)
 shadow_offset = Vector2(0, 0)

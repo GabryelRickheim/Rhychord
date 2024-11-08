@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://faxd0rgm0va2"]
+
+[ext_resource type="FontFile" uid="uid://dgds6huo7ibit" path="res://Fonts/hemi head bd it.otf" id="1_o8p8k"]
+
+[resource]
+default_font = ExtResource("1_o8p8k")
+default_font_size = 40
+Button/colors/font_color = Color(0.980392, 0.976471, 0.964706, 1)
+Button/colors/font_disabled_color = Color(0.980392, 0.976471, 0.964706, 1)
+Button/colors/font_focus_color = Color(1, 0.843137, 0, 1)
+Button/colors/font_hover_color = Color(1, 0.843137, 0, 1)
+Button/colors/font_outline_color = Color(0.152941, 0.152941, 0.141176, 1)

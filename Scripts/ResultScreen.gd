@@ -6,10 +6,56 @@ extends Node2D
 var endSong = load("res://Sound/Low Score.mp3")
 # Variável que indica se a tela de resultados terminou de ser exibida.
 var finished = false
+var newHighScore = false
 
 
 # Exibe a tela de resultados lentamente em sincronia com a música.
 func _ready():
+	# Salva as informações da pontuação em um arquivo.
+	var scorePath = "res://Charts/" + ScoreSingleton.songName + "/score.txt"
+
+	if FileAccess.file_exists(scorePath):
+		var score_file = FileAccess.open(scorePath, FileAccess.READ)
+		var json_data = score_file.get_as_text()
+		var existing_score_data = {}
+		if json_data != "":
+			existing_score_data = JSON.parse_string(json_data)
+
+		if ScoreSingleton.score > int(existing_score_data.get("score", 0)):
+			newHighScore = true
+			var new_score_data = {
+				"song_name": ScoreSingleton.songName,
+				"score": ScoreSingleton.score,
+				"percentage": ScoreSingleton.percentage,
+				"max_combo": ScoreSingleton.maxCombo,
+				"perfects": ScoreSingleton.perfects,
+				"goods": ScoreSingleton.goods,
+				"earlys": ScoreSingleton.earlys,
+				"lates": ScoreSingleton.lates,
+				"misses": ScoreSingleton.misses,
+				"rank": ScoreSingleton.rank
+			}
+			score_file.close()
+			score_file = FileAccess.open(scorePath, FileAccess.WRITE)
+			score_file.store_line(JSON.stringify(new_score_data))
+		score_file.close()
+	else:
+		var score_file = FileAccess.open(scorePath, FileAccess.WRITE)
+		var new_score_data = {
+			"song_name": ScoreSingleton.songName,
+			"score": ScoreSingleton.score,
+			"percentage": ScoreSingleton.percentage,
+			"max_combo": ScoreSingleton.maxCombo,
+			"perfects": ScoreSingleton.perfects,
+			"goods": ScoreSingleton.goods,
+			"earlys": ScoreSingleton.earlys,
+			"lates": ScoreSingleton.lates,
+			"misses": ScoreSingleton.misses,
+			"rank": ScoreSingleton.rank
+		}
+		score_file.store_line(JSON.stringify(new_score_data))
+		score_file.close()
+
 	# Toca a música de acordo com a pontuação.
 	if ScoreSingleton.rank == "S" or ScoreSingleton.rank == "SS":
 		endSong = load("res://Sound/Great Score!.mp3")
@@ -74,6 +120,8 @@ func _ready():
 	elif ScoreSingleton.misses == 1:
 		$Control/FullComboLabel.set_text("Nice Choke!")
 		tween.tween_property($Control/FullComboLabel, "visible", true, 0)
+	if newHighScore:
+		tween.tween_property($Control/NewHighScoreLabel, "visible", true, 0)
 	tween.tween_property($LevelEndFlash, "color:a", 0, 0.2)
 	# Atualiza a variável 'finished' para permitir que o jogador saia da tela de resultados.
 	tween.tween_callback(self._set_finished)
