@@ -9,7 +9,7 @@ def get_midi_info(midi_file_path):
     # Inicializa a lista de informações do MIDI
     midi_info = []
 
-    bpm = 180
+    bpm = 135
 
     # Adiciona as informações de BPM à lista de informações do MIDI
     midi_info.append({"bpm": bpm})
@@ -46,7 +46,7 @@ def get_midi_info(midi_file_path):
     return midi_info
 
 # Caminho do arquivo MIDI a ser processado
-midi_file_path = "race.mid"
+midi_file_path = "browhat.mid"
 
 # Obtém os tempos de início das notas chamando a função get_note_start_times
 midi_info = get_midi_info(midi_file_path)

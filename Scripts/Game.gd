@@ -12,10 +12,10 @@ var goodTimingWindow = 0  # Janela de tempo para acertos bons
 var Note = preload("res://Scenes/Note.tscn")  # Cena da nota
 var notes = []  # Lista de momentos em que as notas devem ser acertadas
 var lanes = []  # Lista de direções das notas
-var types = [] # Lista dos tipos das notas
+var types = []  # Lista dos tipos das notas
 var currentNote = 0  # Indice da próxima nota a ser gerada
 var instance = null  # Instancia da nota a ser gerada
-var noteObjects = [] # Guarda as referencias das notas instanciadas
+var noteObjects = []  # Guarda as referencias das notas instanciadas
 
 # Variaveis responsaveis pela pontuacao
 var score = 0  # Pontuação do jogador
@@ -28,6 +28,7 @@ var earlys = 0  # Quantidade de acertos adiantados
 var lates = 0  # Quantidade de acertos atrasados
 var misses = 0  # Quantidade de erros
 var currentPercentage = 100.0  # Porcentagem de acertos do jogador
+var noteCount = 0  # Quantidade de notas acertadas ou erradas
 
 
 # Função chamada quando o jogo e iniciado
@@ -104,8 +105,8 @@ func _build_chart(chartPath):
 	bpm = json[0]["bpm"]
 	secsPerBeat = (60.0 / bpm)
 	startDelay = (secsPerBeat * 3)
-	perfectTimingWindow = (secsPerBeat / 12) * (bpm / 138)
-	goodTimingWindow = (secsPerBeat / 8) * (bpm / 138)
+	perfectTimingWindow = (secsPerBeat / 25) * (bpm / 138)
+	goodTimingWindow = (secsPerBeat / 10) * (bpm / 138)
 
 	# Instancia os objetos de nota e inicializa seus atributos com
 	# base no mapa de notas, e então adiciona-os na lista de notas
@@ -136,6 +137,7 @@ func _build_chart(chartPath):
 # Função chamada quando uma nota é destruída.
 # Responsável por calcular a pontuação do jogador e atualizar a interface do usuário
 func _on_note_destroy(index, hit, type):
+	noteCount += 1
 	# Verifica se a nota destruida foi acertada
 	if hit:
 		# Calcula a diferença entre o momento em que a nota foi acertada
@@ -158,9 +160,10 @@ func _on_note_destroy(index, hit, type):
 		# e atualiza a interface do usuário com base no resultado
 		if type == 1:
 			score += 10
-			perfects += 1
 			$Control/ScoreLabel.set_text("%05d" % score)
-		elif offset < perfectTimingWindow && offset > (perfectTimingWindow * -1):
+		elif (
+			offset < perfectTimingWindow && offset > (perfectTimingWindow * -1)
+		):
 			$Control/JudgementLabel.set_text("Perfect!")
 			score += 100
 			perfects += 1
@@ -193,8 +196,8 @@ func _on_note_destroy(index, hit, type):
 	# Acertos adiantados ou atrasados contam apenas 70% do valor de um acerto perfeito
 	currentPercentage = (
 		(
-			(notesHit - (goods * 0.1) - (earlys * 0.3) - (lates * 0.3))
-			/ (index + 1.0)
+			(notesHit - (goods * 0.5) - (earlys * 0.75) - (lates * 0.75))
+			/ noteCount
 		)
 		* 100.0
 	)

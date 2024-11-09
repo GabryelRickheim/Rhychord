@@ -3,7 +3,6 @@
   {
     "chart": [
       { "lane": 0, "note": 0.0, "type": 0 },
-	  { "lane": 2, "note": 0.0, "type": 0 },
       { "lane": 3, "note": 0.375, "type": 0 },
       { "lane": 2, "note": 0.75, "type": 0 },
       { "lane": 0, "note": 1.125, "type": 0 },
