@@ -45,7 +45,10 @@ func _ready():
 	var chartPath = "./Charts/" + songName + "/chart.json"
 	# Chama a função _build_chart passando o caminho do arquivo de
 	# mapa das notas como argumento
-	_build_chart(chartPath)
+	if FileAccess.file_exists(chartPath):
+		_build_chart(chartPath)
+	else:
+		_on_conductor_finished()
 	# Define o volume do áudio de acerto com base no volume definido
 	# no objeto SettingsSingleton
 	$AudioStreamPlayer.volume_db = SettingsSingleton.hitSoundVolume
@@ -92,6 +95,11 @@ func _build_chart(chartPath):
 	var file = FileAccess.open(chartPath, FileAccess.READ)
 	var contents = file.get_as_text()
 	file.close()
+	var jsonInstance = JSON.new()
+	var error = jsonInstance.parse(contents)
+	if error != OK:
+		_on_conductor_finished()
+		return
 	var json = JSON.parse_string(contents)
 
 	# Extrai o momento em que a nota deve ser acertada e sua direção da string JSON
