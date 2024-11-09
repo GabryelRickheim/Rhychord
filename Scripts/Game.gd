@@ -41,8 +41,8 @@ func _ready():
 	var tween = self.create_tween()
 	tween.tween_property($LevelEndFade, "color:a", 0, 0.5)
 	# Obtém o caminho do arquivo de áudio e do mapa de notas com base no nome da música
-	var songPath = "res://Charts/" + songName + "/song.ogg"
-	var chartPath = "res://Charts/" + songName + "/chart.json"
+	var songPath = "./Charts/" + songName + "/song.ogg"
+	var chartPath = "./Charts/" + songName + "/chart.json"
 	# Chama a função _build_chart passando o caminho do arquivo de
 	# mapa das notas como argumento
 	_build_chart(chartPath)

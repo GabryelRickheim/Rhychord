@@ -12,7 +12,7 @@ var newHighScore = false
 # Exibe a tela de resultados lentamente em sincronia com a música.
 func _ready():
 	# Salva as informações da pontuação em um arquivo.
-	var scorePath = "res://Charts/" + ScoreSingleton.songName + "/score.txt"
+	var scorePath = "./Charts/" + ScoreSingleton.songName + "/score.txt"
 
 	if FileAccess.file_exists(scorePath):
 		var score_file = FileAccess.open(scorePath, FileAccess.READ)

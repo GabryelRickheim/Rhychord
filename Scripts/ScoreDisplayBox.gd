@@ -12,7 +12,7 @@ func _process(delta):
 
 
 func set_high_score_label(song_name):
-	var scorePath = "res://Charts/" + song_name + "/score.txt"
+	var scorePath = "./Charts/" + song_name + "/score.txt"
 	if FileAccess.file_exists(scorePath):
 		var score_file = FileAccess.open(scorePath, FileAccess.READ)
 		var json_data = score_file.get_as_text()

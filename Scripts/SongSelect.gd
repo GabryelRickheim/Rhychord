@@ -9,6 +9,7 @@ var instance = null
 # Função chamada quando o nó é criado
 # Realiza o fade in e toca a música de fundo
 func _ready():
+	# create charts folder if not exists
 	$LevelEndFade.color.a = 1
 	$Conductor.initialize("res://Sound/Lydia ~Menu~.ogg", 120, 0.5)
 	$Conductor.play()
@@ -30,7 +31,7 @@ func _on_conductor_finished():
 
 
 func _build_song_select_buttons():
-	var dir = DirAccess.open("res://Charts")
+	var dir = DirAccess.open("./Charts")
 	var songs = []
 	if dir:
 		dir.list_dir_begin()
@@ -40,12 +41,20 @@ func _build_song_select_buttons():
 				songs.append(folder_name)
 			folder_name = dir.get_next()
 		dir.list_dir_end()
+		if songs.size() == 0:
+			var button = SongSelectButton.instantiate()
+			button.initialize("No songs found")
+			$Control/ScrollContainer/VBoxContainer.add_child(button)
 		for i in range(songs.size()):
 			var button = SongSelectButton.instantiate()
 			button.initialize(songs[i])
 			button.connect("songFocused", _on_song_focused)
 			button.connect("songSelected", _on_song_selected)
 			$Control/ScrollContainer/VBoxContainer.add_child(button)
+	else:
+		var button = SongSelectButton.instantiate()
+		button.initialize("No songs found")
+		$Control/ScrollContainer/VBoxContainer.add_child(button)
 
 
 # Funções chamadas quando os botões de seleção de música são pressionados

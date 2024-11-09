@@ -186,13 +186,13 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(96, 158)
 text = "High Score:
-    99999
+    -
 Percentage:
-     100.00%
+     -
 Notes:
-    999/999
+    -
 Rank:
-    SS"
+    -"
 label_settings = SubResource("LabelSettings_0apjq")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
