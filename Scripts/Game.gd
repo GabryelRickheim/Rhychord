@@ -113,7 +113,7 @@ func _build_chart(chartPath):
 	bpm = json[0]["bpm"]
 	secsPerBeat = (60.0 / bpm)
 	startDelay = (secsPerBeat * 3)
-	perfectTimingWindow = (secsPerBeat / 25) * (bpm / 138)
+	perfectTimingWindow = (secsPerBeat / 20) * (bpm / 138)
 	goodTimingWindow = (secsPerBeat / 10) * (bpm / 138)
 
 	# Instancia os objetos de nota e inicializa seus atributos com
@@ -204,7 +204,7 @@ func _on_note_destroy(index, hit, type):
 	# Acertos adiantados ou atrasados contam apenas 70% do valor de um acerto perfeito
 	currentPercentage = (
 		(
-			(notesHit - (goods * 0.5) - (earlys * 0.75) - (lates * 0.75))
+			(notesHit - (goods * 0.333) - (earlys * 0.75) - (lates * 0.75))
 			/ noteCount
 		)
 		* 100.0
