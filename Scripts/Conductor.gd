@@ -87,8 +87,13 @@ func _on_StartTimer_timeout():
 
 # Função para carregar a música e definir o volume e as batidas por minuto
 func initialize(songPathArg, bpmArg, secsPerBeatArg):
-	stream = load(songPathArg)
-	volume_db = SettingsSingleton.songVolume
+	var song
+	if songPathArg.contains("res://"):
+		song = load(songPathArg)
+	else:
+		song = AudioStreamOggVorbis.load_from_file(songPathArg)
+	self.stream = song
+	self.volume_db = SettingsSingleton.songVolume
 	bpm = bpmArg
 	secsPerBeat = secsPerBeatArg
 

@@ -46,7 +46,7 @@ def get_midi_info(midi_file_path):
     return midi_info
 
 # Caminho do arquivo MIDI a ser processado
-midi_file_path = "browhat.mid"
+midi_file_path = "browhatshort.mid"
 
 # Obtém os tempos de início das notas chamando a função get_note_start_times
 midi_info = get_midi_info(midi_file_path)
