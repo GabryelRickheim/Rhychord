@@ -19,7 +19,8 @@ boot_splash/bg_color=Color(0.152941, 0.152941, 0.141176, 1)
 boot_splash/image="res://Sprites/game/Rhychord.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://icon.svg"
+config/icon="res://Sprites/game/logo.png"
+config/windows_native_icon="res://Sprites/game/logo.ico"
 
 [autoload]
 
