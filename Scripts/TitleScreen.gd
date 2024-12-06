@@ -5,7 +5,7 @@ extends Control
 
 # Exibe a tela de título depois de um fade-in e inicia a música de fundo
 func _ready():
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	$LevelEndFade.color.a = 1
 	$Conductor.initialize("res://Sound/Lydia ~Main Menu~.ogg", 120, 1)
 	$Conductor.play()
